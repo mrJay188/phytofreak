@@ -1,0 +1,165 @@
+{%- liquid
+  assign tab_product = product
+  if tab_product == blank and section.settings.product != blank
+    assign tab_product = section.settings.product
+  endif
+-%}
+<section class="pd-tabs-wrap w-full">
+  <div class="mx-auto max-w-content px-6 lg:px-12">
+    <div class="pd-tabs" role="tablist">
+      {%- for block in section.blocks -%}
+        <button
+          type="button"
+          class="pd-tab{% if forloop.first %} active{% endif %}"
+          role="tab"
+          aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          data-tab="{{ block.id }}"
+          {{ block.shopify_attributes }}
+        >
+          {{ block.settings.heading | upcase }}
+        </button>
+      {%- endfor -%}
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign tab_key = block.settings.heading | downcase | strip
+        assign panel_content = block.settings.content
+        assign panel_image = block.settings.image
+        assign use_dynamic = false
+
+        if tab_product != blank
+          case tab_key
+            when 'description'
+              if tab_product.description != blank
+                assign panel_content = tab_product.description
+                assign use_dynamic = true
+              endif
+            when 'feeding guide'
+              if tab_product.metafields.custom.feeding_guide != blank
+                assign panel_content = tab_product.metafields.custom.feeding_guide
+                assign use_dynamic = true
+              endif
+            when 'feeding'
+              if tab_product.metafields.custom.feeding_guide != blank
+                assign panel_content = tab_product.metafields.custom.feeding_guide
+                assign use_dynamic = true
+              endif
+            when 'ingredients'
+              if tab_product.metafields.custom.ingredients != blank
+                assign panel_content = tab_product.metafields.custom.ingredients
+                assign use_dynamic = true
+              endif
+            when 'storage'
+              if tab_product.metafields.custom.storage != blank
+                assign panel_content = tab_product.metafields.custom.storage
+                assign use_dynamic = true
+              endif
+            when 'shipping'
+              if tab_product.metafields.custom.shipping != blank
+                assign panel_content = tab_product.metafields.custom.shipping
+                assign use_dynamic = true
+              elsif shop.shipping_policy.body != blank
+                assign panel_content = shop.shipping_policy.body
+                assign use_dynamic = true
+              endif
+            when 'faq'
+              if tab_product.metafields.custom.faq != blank
+                assign panel_content = tab_product.metafields.custom.faq
+                assign use_dynamic = true
+              endif
+          endcase
+
+          if panel_image == blank and tab_product.featured_media != blank
+            if tab_key == 'description' or tab_key == 'feeding guide' or tab_key == 'feeding'
+              assign panel_image = tab_product.featured_media
+            endif
+          endif
+        endif
+
+        if panel_content == blank and block.settings.content != blank
+          assign panel_content = block.settings.content
+        endif
+      -%}
+      <div
+        id="tab-{{ block.id }}"
+        class="pd-tab-panel{% if forloop.first %} active{% endif %}"
+        role="tabpanel"
+        {% unless forloop.first %}hidden{% endunless %}
+      >
+        {%- if block.settings.layout == 'split' -%}
+          <div class="pd-split">
+            <div>
+              {%- if block.settings.title != blank -%}<h2>{{ block.settings.title }}</h2>{%- endif -%}
+              {%- if panel_content != blank -%}
+                <div class="rte pf-muted{% unless use_dynamic %} max-w-2xl{% endunless %}">{{ panel_content }}</div>
+              {%- endif -%}
+              {%- if block.settings.checklist != blank -%}
+                <ul class="pd-check-list">
+                  {%- assign items = block.settings.checklist | newline_to_br | split: '<br />' -%}
+                  {%- for item in items -%}
+                    {%- if item != blank -%}
+                      <li>
+                        <span class="pd-check"><svg fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span>
+                        {{ item | strip }}
+                      </li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </ul>
+              {%- endif -%}
+            </div>
+            {%- if panel_image != blank -%}
+              <div class="pd-split-img">
+                {{ panel_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.title }}
+              </div>
+            {%- elsif block.settings.fallback_image_url != blank -%}
+              <div class="pd-split-img">
+                <img src="{{ block.settings.fallback_image_url }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="800" height="600">
+              </div>
+            {%- endif -%}
+          </div>
+        {%- else -%}
+          {%- if block.settings.title != blank -%}<h2>{{ block.settings.title }}</h2>{%- endif -%}
+          {%- if panel_content != blank -%}
+            <div class="rte pf-muted max-w-2xl">{{ panel_content }}</div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Product Tabs",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product (only if not on product page)" }
+  ],
+  "blocks": [{
+    "type": "tab",
+    "name": "Tab",
+    "settings": [
+      { "type": "text", "id": "heading", "label": "Tab label", "default": "Description" },
+      { "type": "text", "id": "title", "label": "Panel title" },
+      { "type": "richtext", "id": "content", "label": "Fallback content (used when product/metafield empty)" },
+      { "type": "textarea", "id": "checklist", "label": "Checklist (one per line)" },
+      { "type": "image_picker", "id": "image", "label": "Side image" },
+      { "type": "text", "id": "fallback_image_url", "label": "Fallback image URL" },
+      { "type": "select", "id": "layout", "label": "Layout", "options": [
+        { "value": "simple", "label": "Simple" },
+        { "value": "split", "label": "Split with image" }
+      ], "default": "split" }
+    ]
+  }],
+  "presets": [{ "name": "PF Product Tabs", "blocks": [
+    { "type": "tab", "settings": { "heading": "Description", "title": "Product Overview", "layout": "split", "fallback_image_url": "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=800" } },
+    { "type": "tab", "settings": { "heading": "Feeding Guide", "title": "Feeding Guide", "layout": "split", "fallback_image_url": "https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg?auto=compress&cs=tinysrgb&w=800" } },
+    { "type": "tab", "settings": { "heading": "Ingredients", "title": "Ingredients", "layout": "simple" } },
+    { "type": "tab", "settings": { "heading": "Storage", "title": "Storage", "layout": "simple" } },
+    { "type": "tab", "settings": { "heading": "Shipping", "title": "Shipping", "layout": "simple" } },
+    { "type": "tab", "settings": { "heading": "FAQ", "title": "FAQ", "layout": "simple" } }
+  ]}]
+}
+{% endschema %}

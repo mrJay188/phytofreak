@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "pf-collection",
+      "settings": {
+        "label": "SHOP",
+        "products_per_page": 16
+      }
+    }
+  },
+  "order": ["main"]
+}

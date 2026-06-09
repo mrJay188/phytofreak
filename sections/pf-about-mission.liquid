@@ -1,0 +1,38 @@
+<section id="our-story" class="about-mission w-full">
+  <div class="about-mission-grid mx-auto max-w-content">
+    <div class="about-mission-copy lg:px-12">
+      <h2>{{ section.settings.mission_title }}</h2>
+      <p>{{ section.settings.mission_text }}</p>
+      <h2>{{ section.settings.promise_title }}</h2>
+      <ul class="about-promise-list">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>
+            <span class="about-hex-check" aria-hidden="true"><svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg></span>
+            {{ block.settings.text }}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+    {%- if section.settings.image != blank -%}
+      <div class="about-mission-photo">
+        {{ section.settings.image | image_url: width: 1400 | image_tag: loading: 'lazy', alt: section.settings.image.alt }}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF About Mission",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    { "type": "text", "id": "mission_title", "label": "Mission title", "default": "Our Mission" },
+    { "type": "textarea", "id": "mission_text", "label": "Mission text" },
+    { "type": "text", "id": "promise_title", "label": "Promise title", "default": "Our Promise" },
+    { "type": "image_picker", "id": "image", "label": "Image" }
+  ],
+  "blocks": [{ "type": "promise", "name": "Promise", "settings": [{ "type": "text", "id": "text", "label": "Text" }] }],
+  "presets": [{ "name": "PF About Mission" }]
+}
+{% endschema %}

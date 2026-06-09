@@ -1,0 +1,38 @@
+{%- liquid
+  assign pf_badge = badge | default: ''
+  assign pf_bg = bg_image | default: product.featured_image
+-%}
+<article class="product-card-ref">
+  <a href="{{ product.url }}" class="block">
+    <div class="product-stage">
+      {%- if pf_bg != blank -%}
+        <div class="product-stage-bg" style="background-image:url('{{ pf_bg | image_url: width: 800 }}')"></div>
+      {%- endif -%}
+      {%- if pf_badge != blank -%}
+        <span class="ring-badge-ref">{{ pf_badge | newline_to_br }}</span>
+      {%- endif -%}
+      {%- if product.featured_image -%}
+        {{ product.featured_image | image_url: width: 400 | image_tag: class: 'product-bottle-img', loading: 'lazy', alt: product.title }}
+      {%- endif -%}
+    </div>
+  </a>
+  <div class="product-body">
+    <h3 class="mb-1 text-[15px] font-semibold">
+      <a href="{{ product.url }}" class="hover:text-[#d2ff34] transition">{{ product.title }}</a>
+    </h3>
+    {%- if product.metafields.custom.tagline != blank -%}
+      <p class="mb-2 text-xs text-slate-500">{{ product.metafields.custom.tagline }}</p>
+    {%- elsif product.description != blank -%}
+      <p class="mb-2 text-xs text-slate-500">{{ product.description | strip_html | truncate: 60 }}</p>
+    {%- endif -%}
+    <p class="mb-4 text-xs text-gold">★★★★★</p>
+    <div class="flex items-center justify-between">
+      <p class="font-bold">
+        <span class="text-xs font-normal text-slate-500">FROM </span>{{ product.price_min | money }}
+      </p>
+      <a href="{{ product.url }}" class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-[#070f1c] text-[#d2ff34] hover:border-[#d2ff34]/50" aria-label="View {{ product.title }}">
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9H8L6 6z"/></svg>
+      </a>
+    </div>
+  </div>
+</article>

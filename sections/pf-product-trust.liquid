@@ -1,0 +1,35 @@
+<section class="pd-trust-bar w-full" aria-label="Product guarantees">
+  <div class="mx-auto max-w-content px-6 lg:px-12">
+    <ul class="pd-trust-grid">
+      {%- for block in section.blocks -%}
+        <li class="pd-trust-item" {{ block.shopify_attributes }}>
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <strong>{{ block.settings.title | newline_to_br }}</strong>
+          <span>{{ block.settings.text }}</span>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Product Trust",
+  "tag": "section",
+  "class": "pf-section",
+  "blocks": [{
+    "type": "trust",
+    "name": "Trust item",
+    "settings": [
+      { "type": "textarea", "id": "title", "label": "Title", "default": "LIVE ARRIVAL\nGUARANTEE" },
+      { "type": "text", "id": "text", "label": "Text", "default": "Arrives alive or we replace it" }
+    ]
+  }],
+  "presets": [{ "name": "PF Product Trust", "blocks": [
+    { "type": "trust", "settings": { "title": "LIVE ARRIVAL\nGUARANTEE", "text": "Arrives alive or we replace it" } },
+    { "type": "trust", "settings": { "title": "SHIPS FRESH", "text": "Harvested & shipped same week" } },
+    { "type": "trust", "settings": { "title": "LAB CULTURED", "text": "Sterile controlled environments" } },
+    { "type": "trust", "settings": { "title": "REEF TESTED", "text": "Proven in real reef tanks" } }
+  ]}]
+}
+{% endschema %}

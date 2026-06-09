@@ -1,0 +1,70 @@
+<section class="contact-hero w-full">
+  <div class="mx-auto grid max-w-content grid-cols-1 gap-14 px-6 lg:grid-cols-[1fr_1.05fr] lg:gap-20 lg:px-12">
+    <div class="contact-info">
+      {%- if section.settings.label != blank -%}<p class="section-label mb-5">{{ section.settings.label }}</p>{%- endif -%}
+      <h1>{{ section.settings.heading }}</h1>
+      {%- if section.settings.lead != blank -%}<p class="lead">{{ section.settings.lead }}</p>{%- endif -%}
+      <ul class="contact-list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'contact_item' -%}
+            <li class="contact-item" {{ block.shopify_attributes }}>
+              <span class="contact-icon" aria-hidden="true">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 6h16v12H4V6zm2 0l8 6 8-6"/></svg>
+              </span>
+              <div>
+                <h3>{{ block.settings.title }}</h3>
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}">{{ block.settings.value }}</a>
+                {%- else -%}
+                  <span class="contact-value">{{ block.settings.value }}</span>
+                {%- endif -%}
+                <p>{{ block.settings.note }}</p>
+              </div>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+    <div class="contact-form-card">
+      <h2>{{ section.settings.form_heading }}</h2>
+      {%- form 'contact', id: 'ContactForm', class: 'pf-contact-form' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="pf-lime mb-4">Thank you — we'll get back to you soon.</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="text-gold mb-4">{{ form.errors | default_errors }}</p>
+        {%- endif -%}
+        <input type="text" name="contact[name]" class="contact-field" placeholder="Your Name" required aria-label="Your Name" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+        <input type="email" name="contact[email]" class="contact-field" placeholder="Email Address" required aria-label="Email" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+        <input type="text" name="contact[subject]" class="contact-field" placeholder="Subject" aria-label="Subject">
+        <textarea name="contact[body]" class="contact-field area" placeholder="Your Message" required aria-label="Message">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+        <button type="submit" class="btn-send-full">SEND MESSAGE</button>
+      {%- endform -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Contact Hero",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "CONTACT US" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We're Here to Help!" },
+    { "type": "textarea", "id": "lead", "label": "Lead text" },
+    { "type": "text", "id": "form_heading", "label": "Form heading", "default": "Send Us a Message" }
+  ],
+  "blocks": [{
+    "type": "contact_item",
+    "name": "Contact item",
+    "settings": [
+      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "text", "id": "value", "label": "Value" },
+      { "type": "url", "id": "link", "label": "Link (optional)" },
+      { "type": "text", "id": "note", "label": "Note" }
+    ]
+  }],
+  "presets": [{ "name": "PF Contact Hero" }]
+}
+{% endschema %}

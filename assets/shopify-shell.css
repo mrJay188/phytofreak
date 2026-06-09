@@ -1,0 +1,27 @@
+/* Minimal Shopify wrapper reset — not Dawn */
+.shopify-section:empty {
+  display: none;
+}
+
+#MainContent {
+  display: block;
+}
+
+#MainContent .shopify-section + .shopify-section {
+  margin-top: 0;
+}
+
+.pf-section,
+.pf-header-section {
+  margin: 0;
+  padding: 0;
+}
+
+.rte a {
+  color: #d2ff34;
+  text-decoration: underline;
+}
+
+.rte p + p {
+  margin-top: 1rem;
+}

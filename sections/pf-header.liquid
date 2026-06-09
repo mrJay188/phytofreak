@@ -1,0 +1,96 @@
+<header class="sticky top-0 z-50 w-full border-b border-white/[0.08] bg-[#03060c]/95 backdrop-blur-lg">
+  <div class="header-grid mx-auto max-w-content px-6 lg:px-12">
+    <a href="{{ routes.root_url }}" class="logo-wrap flex items-center gap-3">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 120 | image_tag: class: 'h-11 w-auto', alt: shop.name }}
+      {%- else -%}
+        <span class="logo-mark" aria-hidden="true"></span>
+      {%- endif -%}
+      <span class="text-xl font-bold tracking-tight">{{ section.settings.logo_text | default: shop.name | split: ' ' | first }}<span class="pf-lime">{{ section.settings.logo_accent | default: 'Freak' }}</span></span>
+    </a>
+
+    <nav id="main-nav" class="nav-wrap absolute left-0 top-full hidden w-full flex-col gap-5 border-b border-white/10 bg-[#03060c] px-6 py-6 lg:static lg:flex lg:w-auto lg:flex-row lg:items-center lg:gap-9 lg:border-0 lg:bg-transparent lg:p-0" aria-label="Main">
+      {%- if section.settings.menu != blank and section.settings.menu.links.size > 0 -%}
+        {%- for link in section.settings.menu.links -%}
+          <a
+            href="{{ link.url }}"
+            class="nav-link {% if link.active %}active{% else %}pf-muted{% endif %} text-[11px] font-semibold tracking-[0.14em] transition hover:text-white"
+          >
+            {{ link.title | upcase }}
+            {%- if link.links != blank -%}<span class="text-[9px] opacity-70"> ▾</span>{%- endif -%}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <a href="{{ routes.root_url }}" class="nav-link active text-[11px] font-semibold tracking-[0.14em]">HOME</a>
+        <a href="{{ routes.all_products_collection_url }}" class="nav-link pf-muted text-[11px] font-semibold tracking-[0.14em] transition hover:text-white">SHOP</a>
+        <a href="/pages/about" class="nav-link pf-muted text-[11px] font-semibold tracking-[0.14em] transition hover:text-white">ABOUT US</a>
+        <a href="/pages/contact" class="nav-link pf-muted text-[11px] font-semibold tracking-[0.14em] transition hover:text-white">CONTACT</a>
+      {%- endif -%}
+    </nav>
+
+    <div class="tools-wrap flex items-center justify-end gap-5">
+      <button type="button" id="menu-btn" class="text-white/90 lg:hidden" aria-label="Menu" aria-expanded="false">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      {%- if section.settings.enable_search -%}
+        <a href="{{ routes.search_url }}" class="text-white/80 hover:text-white" aria-label="Search">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3-3"/></svg>
+        </a>
+      {%- endif -%}
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="hidden text-white/80 hover:text-white sm:block" aria-label="Account">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg>
+        </a>
+      {%- endif -%}
+
+      <a href="{{ routes.cart_url }}" class="relative text-white/80 hover:text-white" id="cart-icon-bubble" aria-label="Cart">
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M6 6h15l-1.5 9H8L6 6z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>
+        {%- if cart != empty -%}
+          <span class="absolute -right-2.5 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[#d2ff34] px-1 text-[10px] font-bold text-[#050a14]">{{ cart.item_count }}</span>
+        {%- else -%}
+          <span class="absolute -right-2.5 -top-2 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[#d2ff34] px-1 text-[10px] font-bold text-[#050a14]">0</span>
+        {%- endif -%}
+      </a>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "PhytoFreak Header",
+  "class": "pf-header-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "Phyto"
+    },
+    {
+      "type": "text",
+      "id": "logo_accent",
+      "label": "Logo accent",
+      "default": "Freak"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_search",
+      "label": "Show search",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

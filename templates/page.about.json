@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "hero": {
+      "type": "pf-about-hero",
+      "settings": {
+        "label": "ABOUT US",
+        "heading": "Passion. Science. Sustainability.",
+        "heading_accent": "That's PhytoFreak.",
+        "button_1_label": "OUR STORY",
+        "button_1_link": "#our-story",
+        "button_2_label": "OUR CULTURES",
+        "button_2_link": "#our-cultures"
+      }
+    },
+    "stats": {
+      "type": "pf-about-stats",
+      "blocks": {
+        "s1": { "type": "stat", "settings": { "value": "10+", "label": "Years in Marine Culture" } },
+        "s2": { "type": "stat", "settings": { "value": "50K+", "label": "Happy Reef Keepers" } },
+        "s3": { "type": "stat", "settings": { "value": "1M+", "label": "Bottles Shipped" } },
+        "s4": { "type": "stat", "settings": { "value": "100%", "label": "Satisfaction Guarantee" } }
+      },
+      "block_order": ["s1", "s2", "s3", "s4"],
+      "settings": {}
+    },
+    "mission": {
+      "type": "pf-about-mission",
+      "blocks": {
+        "p1": { "type": "promise", "settings": { "text": "Premium quality, every time" } },
+        "p2": { "type": "promise", "settings": { "text": "Sustainably cultured" } },
+        "p3": { "type": "promise", "settings": { "text": "Fresh harvested to order" } },
+        "p4": { "type": "promise", "settings": { "text": "Reef safe & eco-friendly" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {
+        "mission_title": "Our Mission",
+        "promise_title": "Our Promise"
+      }
+    },
+    "diff": {
+      "type": "pf-about-difference",
+      "blocks": {
+        "c1": { "type": "card", "settings": { "title": "Lab Cultured", "text": "Sterile, controlled environments for maximum purity." } },
+        "c2": { "type": "card", "settings": { "title": "Harvested Fresh", "text": "Cultured and shipped at peak density." } },
+        "c3": { "type": "card", "settings": { "title": "Reef Tested", "text": "Tested in real reef tanks before it reaches you." } },
+        "c4": { "type": "card", "settings": { "title": "Sustainable", "text": "Eco-friendly practices for a healthier ocean." } }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": {
+        "heading": "The PhytoFreak Difference"
+      }
+    },
+    "gallery": {
+      "type": "pf-about-gallery",
+      "settings": { "heading": "Trusted By Reef Keepers Worldwide" }
+    }
+  },
+  "order": ["hero", "stats", "mission", "diff", "gallery"]
+}

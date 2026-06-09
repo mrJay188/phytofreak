@@ -1,0 +1,40 @@
+<section id="our-cultures" class="about-diff w-full">
+  <div class="mx-auto max-w-content px-6 lg:px-12">
+    <div class="about-diff-header">
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.text }}</p>
+    </div>
+    <div class="about-diff-grid">
+      {%- for block in section.blocks -%}
+        <article class="about-diff-card" {{ block.shopify_attributes }}>
+          <div class="about-diff-icon" aria-hidden="true">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4"/></svg>
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF About Difference",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "The PhytoFreak Difference" },
+    { "type": "textarea", "id": "text", "label": "Text" }
+  ],
+  "blocks": [{
+    "type": "card",
+    "name": "Card",
+    "settings": [
+      { "type": "text", "id": "title", "label": "Title" },
+      { "type": "textarea", "id": "text", "label": "Text" }
+    ]
+  }],
+  "presets": [{ "name": "PF About Difference" }]
+}
+{% endschema %}

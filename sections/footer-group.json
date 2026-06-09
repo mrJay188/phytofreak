@@ -1,0 +1,25 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "pf-footer": {
+      "type": "pf-footer",
+      "blocks": {
+        "menu-shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "footer" } },
+        "menu-learn": { "type": "menu", "settings": { "heading": "Learn", "menu": "footer" } },
+        "menu-company": { "type": "menu", "settings": { "heading": "Company", "menu": "footer" } },
+        "newsletter": { "type": "newsletter" },
+        "trust-1": { "type": "trust_badge", "settings": { "text": "Live Arrival Guarantee" } },
+        "trust-2": { "type": "trust_badge", "settings": { "text": "Secure Checkout" } },
+        "trust-3": { "type": "trust_badge", "settings": { "text": "Ships Fresh" } }
+      },
+      "block_order": ["menu-shop", "menu-learn", "menu-company", "newsletter", "trust-1", "trust-2", "trust-3"],
+      "settings": {
+        "description": "Premium live phytoplankton and copepod cultures for a healthier, more vibrant reef.",
+        "show_social": true,
+        "show_payment": true
+      }
+    }
+  },
+  "order": ["pf-footer"]
+}

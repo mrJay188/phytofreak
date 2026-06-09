@@ -1,0 +1,165 @@
+<div class="mx-auto max-w-content px-6 lg:px-12">
+  <nav class="pd-breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ routes.root_url }}">Home</a><span>›</span>
+    {%- if product.collections.first -%}
+      <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a><span>›</span>
+    {%- endif -%}
+    <span class="text-white">{{ product.title }}</span>
+  </nav>
+</div>
+
+<section class="pd-hero w-full">
+  <div class="mx-auto grid max-w-content grid-cols-1 gap-10 px-6 lg:grid-cols-2 lg:gap-14 lg:px-12">
+    <div>
+      <div class="pd-gallery-main">
+        {%- if section.settings.badge_text != blank -%}
+          <span class="pd-fresh-badge">{{ section.settings.badge_text | newline_to_br }}</span>
+        {%- endif -%}
+        {%- assign featured_media = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+        {%- if featured_media -%}
+          <img
+            id="pd-main-img"
+            src="{{ featured_media | image_url: width: 900 }}"
+            alt="{{ featured_media.alt | escape }}"
+            width="900"
+            height="900"
+          >
+        {%- endif -%}
+      </div>
+      {%- if product.media.size > 1 -%}
+        <div class="pd-thumbs" role="list">
+          {%- for media in product.media limit: 6 -%}
+            <button
+              type="button"
+              class="pd-thumb{% if forloop.first %} active{% endif %}{% if media.media_type == 'video' %} pd-thumb-video{% endif %}"
+              data-src="{{ media | image_url: width: 900 }}"
+              aria-label="View image {{ forloop.index }}"
+            >
+              {{ media.preview_image | image_url: width: 150 | image_tag: alt: '' }}
+              {%- if media.media_type == 'video' -%}
+                <svg fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              {%- endif -%}
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div>
+      {%- if section.settings.info_label != blank -%}
+        <p class="pd-info-label">{{ section.settings.info_label }}</p>
+      {%- elsif product.vendor != blank -%}
+        <p class="pd-info-label">{{ product.vendor | upcase }}</p>
+      {%- endif -%}
+
+      <h1 class="pd-title">{{ product.title }}</h1>
+
+      {%- if product.metafields.custom.tagline != blank -%}
+        <p class="pd-tagline">{{ product.metafields.custom.tagline }}</p>
+      {%- endif -%}
+
+      <div class="pd-stars">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <a href="#reviews">{{ section.settings.reviews_link_text }}</a>
+      </div>
+
+      <p class="pd-price" id="pd-price" data-price-min="{{ product.price_min }}" data-price-max="{{ product.price_max }}">
+        <span id="pd-price-value">{{ product.selected_or_first_available_variant.price | money }}</span>
+      </p>
+
+      {%- if product.description != blank -%}
+        <p class="pd-desc">{{ product.description | strip_html | truncate: 280 }}</p>
+      {%- endif -%}
+
+      <ul class="pd-features">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'feature' -%}
+            <li class="pd-feature" {{ block.shopify_attributes }}>
+              <span class="pd-feature-icon">
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg>
+              </span>
+              {{ block.settings.text }}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      {%- form 'product', product, id: 'product-form', class: 'pf-product-form' -%}
+        {%- if product.has_only_default_variant -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {%- else -%}
+          <label class="pd-field-label" for="pd-size">SIZE</label>
+          <select id="pd-size" name="id" class="pd-select">
+            {%- for variant in product.variants -%}
+              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}{% unless variant.available %} disabled{% endunless %}>
+                {{ variant.title }}
+              </option>
+            {%- endfor -%}
+          </select>
+        {%- endif -%}
+
+        {%- if product.selling_plan_groups.size > 0 -%}
+          <div class="pd-purchase-options">
+            <label class="pd-radio-card">
+              <div class="pd-radio-row">
+                <span><input type="radio" name="purchase" value="onetime" checked> <span class="pd-radio-title">One-time purchase</span></span>
+                <span class="pd-radio-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+              </div>
+            </label>
+            {%- for group in product.selling_plan_groups -%}
+              {%- assign plan = group.selling_plans.first -%}
+              <label class="pd-radio-card">
+                <div class="pd-radio-row">
+                  <span><input type="radio" name="purchase" value="subscribe"> <span class="pd-radio-title">{{ group.name }}</span></span>
+                  <span class="pd-radio-price">{{ product.selected_or_first_available_variant.price | money }}</span>
+                </div>
+                <p class="pd-radio-sub">{{ section.settings.subscription_text }}</p>
+              </label>
+            {%- endfor -%}
+            <input type="hidden" name="selling_plan" id="selling-plan-input" value="">
+          </div>
+        {%- endif -%}
+
+        <div class="pd-actions">
+          <div class="pd-qty">
+            <button type="button" id="qty-minus" aria-label="Decrease quantity">−</button>
+            <span id="qty-val">1</span>
+            <button type="button" id="qty-plus" aria-label="Increase quantity">+</button>
+          </div>
+          <input type="hidden" name="quantity" id="qty-input" value="1">
+          <button type="submit" name="add" class="pd-add-cart" id="pd-add-cart" {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>ADD TO CART</button>
+        </div>
+        {%- if section.settings.show_buy_now -%}
+          <button type="submit" name="add" class="pd-buy-now" {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>BUY IT NOW</button>
+        {%- endif -%}
+      {%- endform -%}
+
+      <script type="application/json" id="pf-variants-json">
+        {{ product.variants | json }}
+      </script>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Main Product",
+  "tag": "section",
+  "class": "pf-section",
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [{ "type": "text", "id": "text", "label": "Feature text" }]
+    },
+    { "type": "@app" }
+  ],
+  "settings": [
+    { "type": "textarea", "id": "badge_text", "label": "Badge", "default": "FRESH\nHARVESTED" },
+    { "type": "text", "id": "info_label", "label": "Info label", "default": "PREMIUM LIVE PHYTOPLANKTON" },
+    { "type": "text", "id": "reviews_link_text", "label": "Reviews link", "default": "142 Reviews" },
+    { "type": "text", "id": "subscription_text", "label": "Subscription subtext", "default": "Deliver every 2 weeks — cancel anytime" },
+    { "type": "checkbox", "id": "show_buy_now", "label": "Show Buy it now", "default": true }
+  ]
+}
+{% endschema %}

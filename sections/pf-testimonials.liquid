@@ -1,0 +1,60 @@
+{%- liquid
+  assign fallback_images = 'https://images.unsplash.com/photo-1551604203-0b1ef90735c9?w=600&h=400&fit=crop&q=80|https://images.unsplash.com/photo-1526481280695-3cc469afd238?w=600&h=400&fit=crop&q=80|https://images.unsplash.com/photo-1583212292454-1fe622aeb725?w=600&h=400&fit=crop&q=80|https://images.unsplash.com/photo-1551244072-5d12893278ab?w=600&h=400&fit=crop&q=80|https://images.unsplash.com/photo-1544552866-0aaec39b769c?w=600&h=400&fit=crop&q=80' | split: '|'
+  assign fallback_mobile = 'https://images.unsplash.com/photo-1551604203-0b1ef90735c9?w=600&h=200&fit=crop&q=80|https://images.unsplash.com/photo-1526481280695-3cc469afd238?w=600&h=200&fit=crop&q=80|https://images.unsplash.com/photo-1546026423-cc8cb6d87afd?w=600&h=200&fit=crop&q=80|https://images.unsplash.com/photo-1551244072-5d12893278ab?w=600&h=200&fit=crop&q=80|https://images.unsplash.com/photo-1544552866-0aaec39b769c?w=600&h=200&fit=crop&q=80' | split: '|'
+-%}
+<section class="section-pad w-full bg-[#050a14]">
+  <div class="mx-auto max-w-content px-6 lg:px-12">
+    {%- if section.settings.label != blank -%}<p class="section-label mb-8">{{ section.settings.label }}</p>{%- endif -%}
+    <div class="testimonial-img-row">
+      {%- for block in section.blocks -%}
+        {%- assign img_idx = forloop.index0 | modulo: fallback_images.size -%}
+        {%- if block.settings.image != blank -%}
+          {{ block.settings.image | image_url: width: 600 | image_tag: class: 'img-fill', loading: 'lazy', alt: block.settings.author }}
+        {%- elsif block.settings.fallback_image_url != blank -%}
+          <img src="{{ block.settings.fallback_image_url }}" alt="{{ block.settings.author | escape }}" class="img-fill" loading="lazy" width="600" height="400">
+        {%- else -%}
+          <img src="{{ fallback_images[img_idx] }}" alt="{{ block.settings.author | escape }}" class="img-fill" loading="lazy" width="600" height="400">
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <div class="testimonial-block">
+      <div class="testimonial-quote-row">
+        {%- for block in section.blocks -%}
+          {%- assign img_idx = forloop.index0 | modulo: fallback_mobile.size -%}
+          <article class="testimonial-quote-col" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 600 | image_tag: class: 'testimonial-mobile-img lg:hidden', loading: 'lazy', alt: '' }}
+            {%- elsif block.settings.fallback_image_url != blank -%}
+              <img src="{{ block.settings.fallback_image_url }}" alt="" class="testimonial-mobile-img lg:hidden" loading="lazy" width="600" height="200">
+            {%- else -%}
+              <img src="{{ fallback_mobile[img_idx] }}" alt="" class="testimonial-mobile-img lg:hidden" loading="lazy" width="600" height="200">
+            {%- endif -%}
+            <p class="mb-2 text-xs text-gold">★★★★★</p>
+            <blockquote class="mb-3 text-sm italic leading-snug text-[#8fa3b8]">{{ block.settings.quote }}</blockquote>
+            <cite class="text-xs font-semibold not-italic text-slate-500">{{ block.settings.author }}</cite>
+          </article>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Testimonials",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [{ "type": "text", "id": "label", "label": "Label", "default": "TRUSTED BY SERIOUS REEF KEEPERS" }],
+  "blocks": [{
+    "type": "testimonial",
+    "name": "Testimonial",
+    "settings": [
+      { "type": "image_picker", "id": "image", "label": "Image" },
+      { "type": "text", "id": "fallback_image_url", "label": "Fallback image URL" },
+      { "type": "textarea", "id": "quote", "label": "Quote" },
+      { "type": "text", "id": "author", "label": "Author", "default": "@REEFLIFE" }
+    ]
+  }],
+  "presets": [{ "name": "PF Testimonials" }]
+}
+{% endschema %}

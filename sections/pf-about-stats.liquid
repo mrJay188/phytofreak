@@ -1,0 +1,34 @@
+<section class="about-stats w-full" aria-label="Key metrics">
+  <div class="mx-auto max-w-content px-6 lg:px-12">
+    <ul class="about-stats-grid">
+      {%- for block in section.blocks -%}
+        <li class="about-stat" {{ block.shopify_attributes }}>
+          <span class="about-stat-icon" aria-hidden="true">
+            <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z"/></svg>
+          </span>
+          <div>
+            <strong>{{ block.settings.value }}</strong>
+            <span>{{ block.settings.label }}</span>
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF About Stats",
+  "tag": "section",
+  "class": "pf-section",
+  "blocks": [{
+    "type": "stat",
+    "name": "Stat",
+    "settings": [
+      { "type": "text", "id": "value", "label": "Value", "default": "10+" },
+      { "type": "text", "id": "label", "label": "Label", "default": "Years in Marine Culture" }
+    ]
+  }],
+  "presets": [{ "name": "PF About Stats" }]
+}
+{% endschema %}

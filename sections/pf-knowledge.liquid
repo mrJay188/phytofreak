@@ -1,0 +1,79 @@
+<section class="section-pad w-full bg-[#070f1c]">
+  <div class="mx-auto max-w-content px-6 lg:px-12">
+    {%- if section.settings.label != blank -%}<p class="section-label mb-10">{{ section.settings.label }}</p>{%- endif -%}
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'article' -%}
+            <article class="guide-card-ref overflow-hidden rounded-lg border border-white/10 bg-[#0c1528]" {{ block.shopify_attributes }}>
+              <div class="guide-thumb-wrap">
+                {%- if block.settings.image != blank -%}
+                  {{ block.settings.image | image_url: width: 700 | image_tag: class: 'img-fill', loading: 'lazy', alt: block.settings.title }}
+                {%- elsif block.settings.fallback_image_url != blank -%}
+                  <img src="{{ block.settings.fallback_image_url }}" alt="{{ block.settings.title | escape }}" class="img-fill" loading="lazy" width="700" height="400">
+                {%- endif -%}
+                {%- if block.settings.show_play -%}
+                  <span class="absolute inset-0 z-10 flex items-center justify-center">
+                    <span class="flex h-14 w-14 items-center justify-center rounded-full border-2 border-white/60 bg-black/45 backdrop-blur-sm">
+                      <svg class="ml-1 h-6 w-6 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M6 4l10 6-10 6V4z"/></svg>
+                    </span>
+                  </span>
+                {%- endif -%}
+              </div>
+              <div class="p-5">
+                <h3 class="guide-title mb-3">{{ block.settings.title }}</h3>
+                {%- if block.settings.link != blank -%}
+                  <a href="{{ block.settings.link }}" class="text-[10px] font-bold tracking-[0.15em] text-slate-500 hover:text-white">{{ block.settings.link_label }}</a>
+                {%- endif -%}
+              </div>
+            </article>
+          {%- when 'resources' -%}
+            <aside class="resources-box-ref flex flex-col justify-between rounded-lg p-7" {{ block.shopify_attributes }}>
+              <div>
+                <h3 class="mb-4 text-xl font-semibold text-cyan">{{ block.settings.title }}</h3>
+                <p class="text-sm leading-relaxed text-[#8fa3b8]">{{ block.settings.text }}</p>
+              </div>
+              {%- if block.settings.button_label != blank -%}
+                <a href="{{ block.settings.button_link }}" class="btn-ghost-ref mt-8 inline-flex w-full items-center justify-center gap-2 border border-gold/50 px-4 py-3.5 text-[11px] font-bold tracking-[0.1em] text-white hover:border-gold">{{ block.settings.button_label }} <span>→</span></a>
+              {%- endif -%}
+            </aside>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Knowledge",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [{ "type": "text", "id": "label", "label": "Label", "default": "KNOWLEDGE FOR A THRIVING REEF" }],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Guide card",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "fallback_image_url", "label": "Fallback image URL" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "url", "id": "link", "label": "Link" },
+        { "type": "text", "id": "link_label", "label": "Link label", "default": "READ GUIDE" },
+        { "type": "checkbox", "id": "show_play", "label": "Show play icon", "default": true }
+      ]
+    },
+    {
+      "type": "resources",
+      "name": "Resources box",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "More Resources" },
+        { "type": "textarea", "id": "text", "label": "Text" },
+        { "type": "text", "id": "button_label", "label": "Button", "default": "EXPLORE ALL ARTICLES" },
+        { "type": "url", "id": "button_link", "label": "Button link" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "PF Knowledge" }]
+}
+{% endschema %}

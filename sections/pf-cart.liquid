@@ -1,0 +1,345 @@
+{{ 'cart.js' | asset_url | script_tag }}
+{{ 'quantity-popover.js' | asset_url | script_tag }}
+
+<section class="pf-cart-page w-full">
+  <div class="mx-auto max-w-content px-6 py-12 lg:px-12 lg:py-16">
+
+    {%- if cart == empty -%}
+
+      <!-- ── Empty cart ── -->
+      <div class="pf-cart-empty">
+        <div class="pf-cart-empty-icon" aria-hidden="true">
+          <svg fill="none" stroke="currentColor" stroke-width="1.2" viewBox="0 0 24 24">
+            <path d="M6 6h15l-1.5 9H8L6 6z"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/>
+          </svg>
+        </div>
+        <h1 class="pf-cart-empty-title">Your cart is empty</h1>
+        <p class="pf-cart-empty-sub">Looks like you haven't added anything yet — your reef is waiting.</p>
+        <a href="{{ routes.all_products_collection_url }}" class="btn-lime-ref inline-flex items-center gap-2 px-8 py-3.5 text-[11px] font-bold tracking-[0.14em]">
+          SHOP NOW <span>→</span>
+        </a>
+      </div>
+
+    {%- else -%}
+
+      <!-- ── Cart header ── -->
+      <div class="pf-cart-header">
+        <div>
+          <p class="section-label mb-1">SHOPPING CART</p>
+          <h1 class="text-2xl font-bold lg:text-3xl">
+            Your Cart
+            <span class="pf-cart-count">{{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }}</span>
+          </h1>
+        </div>
+        <a href="{{ routes.all_products_collection_url }}" class="pf-cart-continue">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M19 12H5M12 5l-7 7 7 7"/>
+          </svg>
+          Continue Shopping
+        </a>
+      </div>
+
+      <!-- ── Main layout ── -->
+      <div class="pf-cart-layout">
+
+        <!-- ── Cart items ── -->
+        <cart-items class="pf-cart-items-wrap" id="main-cart-items" data-id="{{ section.id }}">
+          <form action="{{ routes.cart_url }}" method="post" id="cart" class="js-contents">
+
+            <!-- Table header -->
+            <div class="pf-cart-thead">
+              <span>Product</span>
+              <span class="text-center">Quantity</span>
+              <span class="text-right">Total</span>
+            </div>
+
+            <!-- Items -->
+            {%- for item in cart.items -%}
+              <div
+                class="pf-cart-row"
+                id="CartItem-{{ item.index | plus: 1 }}"
+                {% if item.parent_relationship.parent != null %}data-nested="true"{% endif %}
+              >
+                <!-- Image -->
+                <div class="pf-cart-img-wrap">
+                  <a href="{{ item.url }}" aria-hidden="true" tabindex="-1">
+                    {%- if item.image -%}
+                      <img
+                        src="{{ item.image | image_url: width: 200 }}"
+                        alt="{{ item.image.alt | escape }}"
+                        width="100"
+                        height="{{ 100 | divided_by: item.image.aspect_ratio | ceil }}"
+                        loading="lazy"
+                        class="pf-cart-img"
+                      >
+                    {%- else -%}
+                      <div class="pf-cart-img-placeholder">
+                        <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                      </div>
+                    {%- endif -%}
+                  </a>
+                </div>
+
+                <!-- Details -->
+                <div class="pf-cart-details">
+                  <a href="{{ item.url }}" class="pf-cart-product-name">{{ item.product.title | escape }}</a>
+
+                  {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != null -%}
+                    <div class="pf-cart-meta">
+                      {%- unless item.product.has_only_default_variant -%}
+                        {%- for option in item.options_with_values -%}
+                          <span class="pf-cart-variant">{{ option.name }}: <strong>{{ option.value }}</strong></span>
+                        {%- endfor -%}
+                      {%- endunless -%}
+                      {%- if item.selling_plan_allocation != null -%}
+                        <span class="pf-cart-variant">{{ item.selling_plan_allocation.selling_plan.name }}</span>
+                      {%- endif -%}
+                      {%- for property in item.properties -%}
+                        {%- assign prop_char = property.first | slice: 0 -%}
+                        {%- if property.last != blank and prop_char != '_' -%}
+                          <span class="pf-cart-variant">{{ property.first }}: {{ property.last }}</span>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </div>
+                  {%- endif -%}
+
+                  <!-- Unit price -->
+                  {%- if item.original_price != item.final_price -%}
+                    <div class="pf-cart-price-row">
+                      <s class="pf-cart-original-price">{{ item.original_price | money }}</s>
+                      <span class="pf-cart-sale-price">{{ item.final_price | money }}</span>
+                    </div>
+                  {%- else -%}
+                    <span class="pf-cart-unit-price">{{ item.original_price | money }} each</span>
+                  {%- endif -%}
+
+                  <!-- Discounts -->
+                  {%- if item.line_level_discount_allocations.size > 0 -%}
+                    <ul class="pf-cart-discounts">
+                      {%- for discount in item.line_level_discount_allocations -%}
+                        <li>🏷 {{ discount.discount_application.title | escape }} (–{{ discount.total_allocated_amount | money }})</li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
+
+                  <!-- Remove (mobile) -->
+                  <cart-remove-button
+                    id="Remove-{{ item.index | plus: 1 }}"
+                    data-index="{{ item.index | plus: 1 }}"
+                    {% assign can_remove = item.instructions.can_remove | default: true %}
+                    {% if can_remove == false %}class="hidden"{% endif %}
+                  >
+                    <a
+                      href="{{ item.url_to_remove }}"
+                      class="pf-cart-remove-link lg:hidden"
+                      aria-label="Remove {{ item.title | escape }}"
+                    >Remove</a>
+                  </cart-remove-button>
+                </div>
+
+                <!-- Quantity -->
+                <div class="pf-cart-qty-cell">
+                  <quantity-input class="pf-cart-qty">
+                    <button class="pf-cart-qty-btn" name="minus" type="button" aria-label="Decrease quantity">
+                      <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14"/></svg>
+                    </button>
+                    <input
+                      class="pf-cart-qty-input"
+                      type="number"
+                      name="updates[]"
+                      value="{{ item.quantity }}"
+                      min="0"
+                      data-min="{{ item.variant.quantity_rule.min }}"
+                      step="{{ item.variant.quantity_rule.increment }}"
+                      {% if item.variant.quantity_rule.max != null %}max="{{ item.variant.quantity_rule.max }}"{% endif %}
+                      data-quantity-variant-id="{{ item.variant.id }}"
+                      data-cart-quantity="{{ cart | item_count_for_variant: item.variant.id }}"
+                      aria-label="Quantity for {{ item.product.title | escape }}"
+                      id="Quantity-{{ item.index | plus: 1 }}"
+                      data-index="{{ item.index | plus: 1 }}"
+                    >
+                    <button class="pf-cart-qty-btn" name="plus" type="button" aria-label="Increase quantity">
+                      <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+                    </button>
+                  </quantity-input>
+
+                  <!-- Remove (desktop) -->
+                  <cart-remove-button
+                    id="Remove-lg-{{ item.index | plus: 1 }}"
+                    data-index="{{ item.index | plus: 1 }}"
+                    {% if can_remove == false %}class="hidden"{% endif %}
+                  >
+                    <a
+                      href="{{ item.url_to_remove }}"
+                      class="pf-cart-remove-btn hidden lg:flex"
+                      aria-label="Remove {{ item.title | escape }}"
+                      title="Remove"
+                    >
+                      <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 6h18M19 6l-1 14H6L5 6M10 11v6M14 11v6M9 6V4h6v2"/>
+                      </svg>
+                    </a>
+                  </cart-remove-button>
+
+                  <!-- Error -->
+                  <div class="pf-cart-line-error" id="Line-item-error-{{ item.index | plus: 1 }}" role="alert">
+                    <small class="pf-cart-error-text"></small>
+                  </div>
+                </div>
+
+                <!-- Line total -->
+                <div class="pf-cart-line-total">
+                  {%- if item.original_line_price != item.final_line_price -%}
+                    <s class="pf-cart-line-original">{{ item.original_line_price | money }}</s>
+                    <span class="pf-cart-line-final">{{ item.final_line_price | money }}</span>
+                  {%- else -%}
+                    <span class="pf-cart-line-final">{{ item.original_line_price | money }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+
+            <p class="visually-hidden" id="cart-live-region-text" aria-live="polite" role="status"></p>
+            <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
+          </form>
+        </cart-items>
+
+        <!-- ── Order summary sidebar ── -->
+        <div class="pf-cart-summary" id="main-cart-footer" data-id="{{ section.id }}">
+          <div class="pf-cart-summary-inner js-contents">
+            <h2 class="pf-cart-summary-title">Order Summary</h2>
+
+            <!-- Discount codes -->
+            {%- if cart.cart_level_discount_applications.size > 0 -%}
+              <ul class="pf-cart-discount-list">
+                {%- for discount in cart.cart_level_discount_applications -%}
+                  <li class="pf-cart-discount-item">
+                    <span>🏷 {{ discount.title | escape }}</span>
+                    <span class="pf-lime">–{{ discount.total_allocated_amount | money }}</span>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+
+            <!-- Line items subtotal -->
+            <div class="pf-cart-summary-row">
+              <span>Subtotal ({{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }})</span>
+              <span>{{ cart.original_total_price | money_with_currency }}</span>
+            </div>
+
+            {%- if cart.total_discount > 0 -%}
+              <div class="pf-cart-summary-row pf-lime">
+                <span>Savings</span>
+                <span>–{{ cart.total_discount | money }}</span>
+              </div>
+            {%- endif -%}
+
+            <div class="pf-cart-summary-divider"></div>
+
+            <div class="pf-cart-summary-total">
+              <span>Total</span>
+              <span>{{ cart.total_price | money_with_currency }}</span>
+            </div>
+
+            <p class="pf-cart-tax-note">
+              {%- if cart.taxes_included -%}
+                Taxes included. Shipping calculated at checkout.
+              {%- else -%}
+                Taxes and shipping calculated at checkout.
+              {%- endif -%}
+            </p>
+
+            <!-- Checkout button -->
+            <form action="{{ routes.cart_url }}" method="post">
+              <button
+                type="submit"
+                name="checkout"
+                class="pf-cart-checkout-btn"
+                {% if cart == empty %}disabled{% endif %}
+              >
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+                SECURE CHECKOUT
+              </button>
+            </form>
+
+            {%- if additional_checkout_buttons -%}
+              <div class="pf-cart-express">
+                <p class="pf-cart-express-label">or pay with</p>
+                {{ content_for_additional_checkout_buttons }}
+              </div>
+            {%- endif -%}
+
+            <!-- Trust badges -->
+            <ul class="pf-cart-trust">
+              <li>
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Secure & Encrypted Checkout
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg>
+                Live Arrival Guarantee
+              </li>
+              <li>
+                <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/></svg>
+                Free Returns on Live Orders
+              </li>
+            </ul>
+
+            <!-- Cart note -->
+            {%- if settings.show_cart_note -%}
+              <div class="pf-cart-note">
+                <label for="Cart-note" class="pf-cart-note-label">Order notes</label>
+                <textarea name="note" form="cart" id="Cart-note" class="pf-cart-note-field" placeholder="Special instructions, delivery notes...">{{ cart.note }}</textarea>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+
+      </div><!-- /.pf-cart-layout -->
+
+      <!-- ── Cart upsell: featured products ── -->
+      {%- if section.settings.show_upsell and section.settings.upsell_collection != blank -%}
+        <div class="pf-cart-upsell">
+          <p class="section-label mb-4">{{ section.settings.upsell_label }}</p>
+          <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {%- for product in section.settings.upsell_collection.products limit: 4 -%}
+              {% render 'pf-product-card', product: product %}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Cart",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Upsell Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_upsell",
+      "label": "Show upsell products",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "upsell_label",
+      "label": "Upsell label",
+      "default": "YOU MIGHT ALSO LIKE"
+    },
+    {
+      "type": "collection",
+      "id": "upsell_collection",
+      "label": "Upsell collection"
+    }
+  ]
+}
+{% endschema %}

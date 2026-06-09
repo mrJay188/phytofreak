@@ -1,0 +1,59 @@
+<section class="culture-section section-pad w-full bg-[#070f1c]">
+  <div class="culture-float-cells hidden xl:block" aria-hidden="true"></div>
+  <div class="mx-auto grid max-w-content grid-cols-1 items-center gap-16 px-6 lg:grid-cols-2 lg:gap-20 lg:px-12">
+    <div class="culture-lab-wrap">
+      {%- if section.settings.main_image != blank -%}
+        {{ section.settings.main_image | image_url: width: 1200 | image_tag: class: 'img-fill', loading: 'lazy', alt: section.settings.main_image.alt }}
+      {%- else -%}
+        <img src="https://images.pexels.com/photos/2280571/pexels-photo-2280571.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Laboratory flasks with live phytoplankton cultures" class="img-fill" loading="lazy" width="1200" height="800">
+      {%- endif -%}
+      <div class="culture-zoom">
+        {%- if section.settings.zoom_image != blank -%}
+          {{ section.settings.zoom_image | image_url: width: 400 | image_tag: class: 'img-fill', loading: 'lazy', alt: section.settings.zoom_image.alt }}
+        {%- else -%}
+          <img src="https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Microscopic phytoplankton cells" class="img-fill" loading="lazy" width="400" height="400">
+        {%- endif -%}
+      </div>
+    </div>
+    <div>
+      {%- if section.settings.label != blank -%}<p class="section-label mb-4">{{ section.settings.label }}</p>{%- endif -%}
+      <h2 class="mb-5 text-3xl font-bold lg:text-[2.4rem]">{{ section.settings.heading }}</h2>
+      {%- if section.settings.text != blank -%}<p class="mb-9 text-[15px] leading-relaxed text-[#8fa3b8]">{{ section.settings.text }}</p>{%- endif -%}
+      <ul class="mb-10 space-y-3.5">
+        {%- for block in section.blocks -%}
+          <li class="flex items-center gap-3 text-sm text-slate-300" {{ block.shopify_attributes }}>
+            <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-lime text-[#050a14]">
+              <svg class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6"/></svg>
+            </span>{{ block.settings.text }}
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="btn-ghost-ref inline-flex items-center gap-2 border px-6 py-3 text-[11px] font-bold tracking-[0.1em]">{{ section.settings.button_label }} <span>→</span></a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Culture",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    { "type": "image_picker", "id": "main_image", "label": "Main image" },
+    { "type": "image_picker", "id": "zoom_image", "label": "Zoom image" },
+    { "type": "text", "id": "label", "label": "Label", "default": "SCIENCE. CULTURE. PERFORMANCE." },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Cultured for Maximum Density." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "LEARN MORE ABOUT OUR CULTURES" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [{ "type": "feature", "name": "Feature", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "High-density live cultures" }] }],
+  "presets": [{ "name": "PF Culture", "blocks": [
+    { "type": "feature", "settings": { "text": "High-density live cultures" } },
+    { "type": "feature", "settings": { "text": "Clean, sustainable methods" } },
+    { "type": "feature", "settings": { "text": "Harvested fresh to order" } }
+  ]}]
+}
+{% endschema %}

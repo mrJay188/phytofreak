@@ -1,0 +1,47 @@
+<section class="relative w-full overflow-hidden bg-[#070f1c]">
+  <div class="mx-auto grid max-w-content grid-cols-1 lg:grid-cols-2">
+    <div class="relative z-10 px-6 py-20 lg:px-12 lg:py-24">
+      {%- if section.settings.label != blank -%}<p class="section-label mb-4">{{ section.settings.label }}</p>{%- endif -%}
+      <h2 class="mb-5 text-3xl font-bold lg:text-[2.4rem]">{{ section.settings.heading }} <span class="heading-accent">{{ section.settings.heading_accent }}</span></h2>
+      {%- if section.settings.text != blank -%}<p class="mb-10 max-w-lg text-[15px] leading-relaxed text-[#8fa3b8]">{{ section.settings.text }}</p>{%- endif -%}
+      <ul class="mb-12 grid grid-cols-1 gap-5 sm:grid-cols-2">
+        {%- for block in section.blocks -%}
+          <li class="flex items-center gap-3 text-sm text-slate-300" {{ block.shopify_attributes }}>
+            <span class="feat-icon-wrap"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/></svg></span>
+            {{ block.settings.text }}
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="btn-ghost-ref inline-flex items-center gap-2 border px-7 py-3 text-[11px] font-bold tracking-[0.1em]">{{ section.settings.button_label }} <span>→</span></a>
+      {%- endif -%}
+    </div>
+    <div class="nutrition-photo-wrap relative">
+      {%- if section.settings.image != blank -%}
+        {{ section.settings.image | image_url: width: 1400 | image_tag: class: 'img-fill', loading: 'lazy', alt: section.settings.image.alt }}
+      {%- else -%}
+        <img src="https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Colorful reef fish among coral" class="img-fill" loading="lazy" width="1400" height="900">
+      {%- endif -%}
+      <div class="nutrition-fade absolute inset-0" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Nutrition",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "label", "label": "Label", "default": "POWERED BY NATURE" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your Reef Deserves" },
+    { "type": "text", "id": "heading_accent", "label": "Accent", "default": "Better Nutrition." },
+    { "type": "textarea", "id": "text", "label": "Text" },
+    { "type": "text", "id": "button_label", "label": "Button", "default": "SEE THE DIFFERENCE" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "blocks": [{ "type": "benefit", "name": "Benefit", "settings": [{ "type": "text", "id": "text", "label": "Text" }] }],
+  "presets": [{ "name": "PF Nutrition" }]
+}
+{% endschema %}

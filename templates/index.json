@@ -1,0 +1,142 @@
+{
+  "sections": {
+    "pf-hero": {
+      "type": "pf-hero",
+      "blocks": {
+        "t1": { "type": "trust_item", "settings": { "text": "LIVE ARRIVAL\nGUARANTEE" } },
+        "t2": { "type": "trust_item", "settings": { "text": "FRESH\nHARVESTED" } },
+        "t3": { "type": "trust_item", "settings": { "text": "LAB\nCULTURED" } },
+        "t4": { "type": "trust_item", "settings": { "text": "REEF\nTESTED" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"],
+      "settings": {
+        "label": "LIVE NUTRITION. REAL RESULTS.",
+        "heading": "Feed Your Reef Like",
+        "heading_accent": "Nature Intended.",
+        "text": "Premium live phytoplankton and copepod cultures engineered for explosive coral growth, vibrant coloration, and thriving marine ecosystems.",
+        "button_1_label": "SHOP PHYTOPLANKTON",
+        "button_2_label": "SHOP COPEPODS"
+      }
+    },
+    "pf-promo": { "type": "pf-promo-bar", "settings": {} },
+    "pf-culture": {
+      "type": "pf-culture",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "text": "High-density live cultures" } },
+        "f2": { "type": "feature", "settings": { "text": "Clean, sustainable methods" } },
+        "f3": { "type": "feature", "settings": { "text": "Harvested fresh to order" } }
+      },
+      "block_order": ["f1", "f2", "f3"],
+      "settings": {
+        "label": "SCIENCE. CULTURE. PERFORMANCE.",
+        "heading": "Cultured for Maximum Density.",
+        "button_label": "LEARN MORE ABOUT OUR CULTURES"
+      }
+    },
+    "pf-products": {
+      "type": "pf-featured-products",
+      "settings": {
+        "label": "PREMIUM LIVE CULTURES",
+        "heading": "Our Most Popular Products",
+        "products_to_show": 4,
+        "view_all_label": "VIEW ALL PRODUCTS"
+      }
+    },
+    "pf-nutrition": {
+      "type": "pf-nutrition",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "text": "Explosive coral growth" } },
+        "b2": { "type": "benefit", "settings": { "text": "Vibrant coloration" } },
+        "b3": { "type": "benefit", "settings": { "text": "Thriving copepod populations" } },
+        "b4": { "type": "benefit", "settings": { "text": "Lab-cultured purity" } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4"],
+      "settings": {
+        "label": "POWERED BY NATURE",
+        "heading": "Your Reef Deserves",
+        "heading_accent": "Better Nutrition.",
+        "button_label": "SEE THE DIFFERENCE"
+      }
+    },
+    "pf-testimonials": {
+      "type": "pf-testimonials",
+      "blocks": {
+        "q1": { "type": "testimonial", "settings": { "quote": "My corals have never looked better. Huge polyp extension and growth!", "author": "@REEFLIFE" } },
+        "q2": { "type": "testimonial", "settings": { "quote": "The best phyto I've used. You can see the density!", "author": "@SALTY_AQUATICS" } },
+        "q3": { "type": "testimonial", "settings": { "quote": "My mandarins devour the Tigriopus. Total game changer.", "author": "@MANDARIN_DREAMS" } },
+        "q4": { "type": "testimonial", "settings": { "quote": "Ships fast, arrives fresh, and my reef loves it.", "author": "@CORAL_GARDENER" } },
+        "q5": { "type": "testimonial", "settings": { "quote": "PhytoFreak is now a must-have in my dosing routine.", "author": "@REEF_NERD" } }
+      },
+      "block_order": ["q1", "q2", "q3", "q4", "q5"],
+      "settings": { "label": "TRUSTED BY SERIOUS REEF KEEPERS" }
+    },
+    "pf-knowledge": {
+      "type": "pf-knowledge",
+      "blocks": {
+        "a1": {
+          "type": "article",
+          "settings": {
+            "title": "How to Dose Phytoplankton",
+            "link_label": "READ GUIDE",
+            "show_play": true,
+            "fallback_image_url": "https://images.unsplash.com/photo-1583212292454-1fe622aeb725?w=700&h=400&fit=crop&q=80"
+          }
+        },
+        "a2": {
+          "type": "article",
+          "settings": {
+            "title": "Best Copepods for Mandarin Fish",
+            "link_label": "READ GUIDE",
+            "show_play": true,
+            "fallback_image_url": "https://images.unsplash.com/photo-1546026423-cc8cb6d87afd?w=700&h=400&fit=crop&q=80"
+          }
+        },
+        "a3": {
+          "type": "article",
+          "settings": {
+            "title": "Building a Home Copepod Culture",
+            "link_label": "READ GUIDE",
+            "show_play": true,
+            "fallback_image_url": "https://images.unsplash.com/photo-1532187863488-abf9db028710?w=700&h=400&fit=crop&q=80"
+          }
+        },
+        "r1": {
+          "type": "resources",
+          "settings": {
+            "title": "More Resources",
+            "text": "Explore guides, videos, and reef nutrition tips from the PhytoFreak team.",
+            "button_label": "EXPLORE ALL ARTICLES"
+          }
+        }
+      },
+      "block_order": ["a1", "a2", "a3", "r1"],
+      "settings": { "label": "KNOWLEDGE FOR A THRIVING REEF" }
+    },
+    "pf-subscribe": {
+      "type": "pf-subscribe-banner",
+      "blocks": {
+        "p1": { "type": "perk", "settings": { "title": "Save 10%+", "subtitle": "Every Order" } },
+        "p2": { "type": "perk", "settings": { "title": "Priority", "subtitle": "Harvest" } },
+        "p3": { "type": "perk", "settings": { "title": "Flexible", "subtitle": "Delivery" } },
+        "p4": { "type": "perk", "settings": { "title": "Cancel", "subtitle": "Anytime" } }
+      },
+      "block_order": ["p1", "p2", "p3", "p4"],
+      "settings": {
+        "heading": "Never Run Out of",
+        "heading_accent": "Reef Nutrition.",
+        "button_1_label": "START YOUR SUBSCRIPTION",
+        "button_2_label": "LEARN MORE →"
+      }
+    }
+  },
+  "order": [
+    "pf-hero",
+    "pf-promo",
+    "pf-culture",
+    "pf-products",
+    "pf-nutrition",
+    "pf-testimonials",
+    "pf-knowledge",
+    "pf-subscribe"
+  ]
+}

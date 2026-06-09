@@ -1,0 +1,57 @@
+{
+  "sections": {
+    "contact": {
+      "type": "pf-contact-hero",
+      "blocks": {
+        "c1": {
+          "type": "contact_item",
+          "settings": {
+            "title": "Email Us",
+            "value": "support@phytofreak.com",
+            "link": "mailto:support@phytofreak.com",
+            "note": "We reply within 24 hours"
+          }
+        },
+        "c2": {
+          "type": "contact_item",
+          "settings": {
+            "title": "Call Us",
+            "value": "(800) 123-4567",
+            "link": "tel:+18001234567",
+            "note": "Mon – Fri: 9AM – 5PM EST"
+          }
+        },
+        "c3": {
+          "type": "contact_item",
+          "settings": {
+            "title": "Live Chat",
+            "value": "Available on our website",
+            "note": "Look for the chat icon"
+          }
+        },
+        "c4": {
+          "type": "contact_item",
+          "settings": {
+            "title": "Location",
+            "value": "123 Ocean Lab Drive",
+            "note": "Key Largo, FL 33037, USA"
+          }
+        }
+      },
+      "block_order": ["c1", "c2", "c3", "c4"],
+      "settings": {
+        "label": "CONTACT US",
+        "heading": "We're Here to Help!",
+        "form_heading": "Send Us a Message"
+      }
+    },
+    "follow": {
+      "type": "pf-contact-follow",
+      "settings": {
+        "heading": "Follow Our Journey",
+        "text": "Stay connected for culture updates, reef tips, and behind-the-scenes content."
+      }
+    }
+  },
+  "order": ["contact", "follow"]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "pf-header": {
+      "type": "pf-header",
+      "settings": {
+        "logo_text": "Phyto",
+        "logo_accent": "Freak",
+        "menu": "main-menu",
+        "enable_search": true
+      }
+    }
+  },
+  "order": ["pf-header"]
+}

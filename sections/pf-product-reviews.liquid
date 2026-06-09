@@ -1,0 +1,94 @@
+<section id="reviews" class="pd-reviews w-full">
+  <div class="mx-auto max-w-content px-6 lg:px-12">
+    <h2 class="mb-8 text-2xl font-bold">{{ section.settings.heading }}</h2>
+
+    {%- for block in section.blocks -%}
+      {%- if block.type == '@app' -%}
+        <div {{ block.shopify_attributes }}>{% render block %}</div>
+      {%- endif -%}
+    {%- endfor -%}
+
+    <div class="pd-reviews-grid">
+      <div class="pd-review-score">
+        <p class="big">{{ section.settings.rating_score }}</p>
+        <p class="stars" aria-hidden="true">★★★★★</p>
+        <p>{{ section.settings.rating_text }}</p>
+        {%- if section.settings.write_review_url != blank -%}
+          <a href="{{ section.settings.write_review_url }}" class="pd-write-review">WRITE A REVIEW</a>
+        {%- endif -%}
+      </div>
+
+      <div class="pd-bars" aria-label="Rating breakdown">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'rating_bar' -%}
+            <div class="pd-bar-row" {{ block.shopify_attributes }}>
+              <span>{{ block.settings.label }}</span>
+              <div class="pd-bar-track"><div class="pd-bar-fill" style="width:{{ block.settings.percent }}%"></div></div>
+              <span>{{ block.settings.percent }}%</span>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'review' -%}
+          <article class="pd-review-card" {{ block.shopify_attributes }}>
+            <div class="head">
+              <div>
+                <p class="name">{{ block.settings.author }}</p>
+                {%- if block.settings.verified -%}<p class="verified">Verified Buyer</p>{%- endif -%}
+              </div>
+              <span class="pf-dim text-xs">{{ block.settings.date }}</span>
+            </div>
+            <p class="stars" aria-hidden="true">★★★★★</p>
+            <p>{{ block.settings.text }}</p>
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: 'Review photo' }}
+            {%- endif -%}
+          </article>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "PF Product Reviews",
+  "tag": "section",
+  "class": "pf-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Customer Reviews" },
+    { "type": "text", "id": "rating_score", "label": "Score", "default": "4.9" },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "Based on 142 reviews" },
+    { "type": "url", "id": "write_review_url", "label": "Write review URL" }
+  ],
+  "blocks": [
+    {
+      "type": "rating_bar",
+      "name": "Rating bar",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "5 star" },
+        { "type": "range", "id": "percent", "min": 0, "max": 100, "step": 1, "label": "Percent", "default": 88 }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        { "type": "text", "id": "author", "label": "Author", "default": "John D." },
+        { "type": "checkbox", "id": "verified", "label": "Verified buyer", "default": true },
+        { "type": "text", "id": "date", "label": "Date", "default": "2 days ago" },
+        { "type": "textarea", "id": "text", "label": "Review text" },
+        { "type": "image_picker", "id": "image", "label": "Photo" }
+      ]
+    },
+    { "type": "@app" }
+  ],
+  "presets": [{ "name": "PF Product Reviews", "blocks": [
+    { "type": "rating_bar", "settings": { "label": "5 star", "percent": 88 } },
+    { "type": "rating_bar", "settings": { "label": "4 star", "percent": 8 } },
+    { "type": "review" }
+  ]}]
+}
+{% endschema %}

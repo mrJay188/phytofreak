@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "pf-cart": {
+      "type": "pf-cart",
+      "settings": {
+        "show_upsell": true,
+        "upsell_label": "YOU MIGHT ALSO LIKE"
+      }
+    }
+  },
+  "order": ["pf-cart"]
+}
