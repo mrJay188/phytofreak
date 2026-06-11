@@ -35,13 +35,18 @@
           "settings": {
             "text": "Reef Safe & Lab Cultured"
           }
+        },
+        "judge_me_reviews_preview_badge_CfABxW": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
         }
       },
       "block_order": [
         "f1",
         "f2",
         "f3",
-        "f4"
+        "f4",
+        "judge_me_reviews_preview_badge_CfABxW"
       ],
       "settings": {
         "badge_text": "FRESH\nHARVESTED",
