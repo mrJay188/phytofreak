@@ -2520,3 +2520,100 @@ body {
 /* ── Cart loading state ── */
 cart-items.is-empty .pf-cart-layout { display: none; }
 
+
+/* ═══════════════════════════════════════════════
+   JUDGE.ME OVERRIDES — PhytoFreak Theme
+═══════════════════════════════════════════════ */
+
+/* Main widget background and typography */
+.jdgm-widget {
+  background-color: var(--pf-bg) !important;
+  color: #fff !important;
+  font-family: inherit !important;
+}
+
+/* Stars to lime */
+.jdgm-star {
+  color: var(--pf-lime) !important;
+}
+
+/* Review cards */
+.jdgm-rev {
+  background: var(--pf-bg-alt) !important;
+  border: 1px solid var(--pf-border) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin-bottom: 20px !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+}
+
+/* Reviewer Name */
+.jdgm-rev__author {
+  color: #fff !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+}
+
+/* Review Date */
+.jdgm-rev__timestamp {
+  color: var(--pf-text-dim) !important;
+  font-size: 12px !important;
+}
+
+/* Verified Buyer Badge */
+.jdgm-rev__buyer-badge {
+  color: var(--pf-cyan) !important;
+  font-weight: 600 !important;
+}
+
+/* Review Body */
+.jdgm-rev__body {
+  color: var(--pf-text-muted) !important;
+  line-height: 1.6 !important;
+  font-size: 14px !important;
+  margin-top: 12px !important;
+}
+
+/* Buttons (Write a review, Submit) */
+.jdgm-write-rev-link, .jdgm-submit-rev {
+  background-color: var(--pf-lime) !important;
+  color: var(--pf-bg) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 12px 24px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  transition: all 0.2s !important;
+}
+
+.jdgm-write-rev-link:hover, .jdgm-submit-rev:hover {
+  background-color: var(--pf-lime-hover) !important;
+  box-shadow: 0 4px 20px rgba(210, 255, 52, 0.4) !important;
+}
+
+/* Inputs / Forms */
+.jdgm-form__fieldset input, .jdgm-form__fieldset textarea {
+  background-color: var(--pf-bg) !important;
+  border: 1px solid var(--pf-border) !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+}
+.jdgm-form__fieldset input:focus, .jdgm-form__fieldset textarea:focus {
+  border-color: var(--pf-cyan) !important;
+  outline: none !important;
+}
+
+/* Histogram / Rating Breakdown */
+.jdgm-histogram__bar-content {
+  background-color: var(--pf-lime) !important;
+}
+.jdgm-histogram__bar {
+  background-color: rgba(255,255,255,0.05) !important;
+  border-radius: 10px !important;
+}
+
+/* Header summary text */
+.jdgm-rev-widg__summary-text {
+  color: var(--pf-text-muted) !important;
+}
