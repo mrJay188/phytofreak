@@ -1,30 +1,94 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "pf-main-product",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "text": "High in DHA & EPA" } },
-        "f2": { "type": "feature", "settings": { "text": "Boosts Coral Growth" } },
-        "f3": { "type": "feature", "settings": { "text": "Perfect for Filter Feeders" } },
-        "f4": { "type": "feature", "settings": { "text": "Reef Safe & Lab Cultured" } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "text": "High in DHA & EPA"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "text": "Boosts Coral Growth"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "text": "Perfect for Filter Feeders"
+          }
+        },
+        "f4": {
+          "type": "feature",
+          "settings": {
+            "text": "Reef Safe & Lab Cultured"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
       "settings": {
         "badge_text": "FRESH\nHARVESTED",
         "info_label": "PREMIUM LIVE PHYTOPLANKTON",
         "reviews_link_text": "See Reviews",
+        "subscription_text": "Deliver every 2 weeks — cancel anytime",
         "show_buy_now": true
       }
     },
     "trust": {
       "type": "pf-product-trust",
       "blocks": {
-        "t1": { "type": "trust", "settings": { "title": "LIVE ARRIVAL\nGUARANTEE", "text": "Arrives alive or we replace it" } },
-        "t2": { "type": "trust", "settings": { "title": "SHIPS FRESH", "text": "Harvested & shipped same week" } },
-        "t3": { "type": "trust", "settings": { "title": "LAB CULTURED", "text": "Sterile controlled environments" } },
-        "t4": { "type": "trust", "settings": { "title": "REEF TESTED", "text": "Proven in real reef tanks" } }
+        "t1": {
+          "type": "trust",
+          "settings": {
+            "title": "LIVE ARRIVAL\nGUARANTEE",
+            "text": "Arrives alive or we replace it"
+          }
+        },
+        "t2": {
+          "type": "trust",
+          "settings": {
+            "title": "SHIPS FRESH",
+            "text": "Harvested & shipped same week"
+          }
+        },
+        "t3": {
+          "type": "trust",
+          "settings": {
+            "title": "LAB CULTURED",
+            "text": "Sterile controlled environments"
+          }
+        },
+        "t4": {
+          "type": "trust",
+          "settings": {
+            "title": "REEF TESTED",
+            "text": "Proven in real reef tanks"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
       "settings": {}
     },
     "tabs": {
@@ -35,9 +99,10 @@
           "settings": {
             "heading": "Description",
             "title": "Product Overview",
-            "layout": "split",
+            "content": "",
             "checklist": "Peak-density live culture\nRich in DHA and EPA\nSupports coral polyp extension",
-            "fallback_image_url": "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=800"
+            "fallback_image_url": "https://images.pexels.com/photos/356040/pexels-photo-356040.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "layout": "split"
           }
         },
         "tab-feed": {
@@ -45,35 +110,133 @@
           "settings": {
             "heading": "Feeding Guide",
             "title": "Feeding Guide",
-            "layout": "split",
-            "fallback_image_url": "https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg?auto=compress&cs=tinysrgb&w=800"
+            "content": "",
+            "checklist": "",
+            "fallback_image_url": "https://images.pexels.com/photos/128756/pexels-photo-128756.jpeg?auto=compress&cs=tinysrgb&w=800",
+            "layout": "split"
           }
         },
-        "tab-ing": { "type": "tab", "settings": { "heading": "Ingredients", "title": "Ingredients", "layout": "simple" } },
-        "tab-stor": { "type": "tab", "settings": { "heading": "Storage", "title": "Storage", "layout": "simple" } },
-        "tab-ship": { "type": "tab", "settings": { "heading": "Shipping", "title": "Shipping", "layout": "simple" } },
-        "tab-faq": { "type": "tab", "settings": { "heading": "FAQ", "title": "FAQ", "layout": "simple" } }
+        "tab-ing": {
+          "type": "tab",
+          "settings": {
+            "heading": "Ingredients",
+            "title": "Ingredients",
+            "content": "",
+            "checklist": "",
+            "fallback_image_url": "",
+            "layout": "simple"
+          }
+        },
+        "tab-stor": {
+          "type": "tab",
+          "settings": {
+            "heading": "Storage",
+            "title": "Storage",
+            "content": "",
+            "checklist": "",
+            "fallback_image_url": "",
+            "layout": "simple"
+          }
+        },
+        "tab-ship": {
+          "type": "tab",
+          "settings": {
+            "heading": "Shipping",
+            "title": "Shipping",
+            "content": "",
+            "checklist": "",
+            "fallback_image_url": "",
+            "layout": "simple"
+          }
+        },
+        "tab-faq": {
+          "type": "tab",
+          "settings": {
+            "heading": "FAQ",
+            "title": "FAQ",
+            "content": "",
+            "checklist": "",
+            "fallback_image_url": "",
+            "layout": "simple"
+          }
+        }
       },
-      "block_order": ["tab-desc", "tab-feed", "tab-ing", "tab-stor", "tab-ship", "tab-faq"],
-      "settings": {}
+      "block_order": [
+        "tab-desc",
+        "tab-feed",
+        "tab-ing",
+        "tab-stor",
+        "tab-ship",
+        "tab-faq"
+      ],
+      "settings": {
+        "product": ""
+      }
     },
     "why": {
       "type": "pf-product-why",
       "blocks": {
-        "p1": { "type": "point", "settings": { "text": "Highest cell density in the industry" } },
-        "p2": { "type": "point", "settings": { "text": "No fillers or preservatives" } },
-        "p3": { "type": "point", "settings": { "text": "Harvested fresh to order" } }
+        "p1": {
+          "type": "point",
+          "settings": {
+            "text": "Highest cell density in the industry"
+          }
+        },
+        "p2": {
+          "type": "point",
+          "settings": {
+            "text": "No fillers or preservatives"
+          }
+        },
+        "p3": {
+          "type": "point",
+          "settings": {
+            "text": "Harvested fresh to order"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3"],
-      "settings": { "heading": "Why Choose PhytoFreak?" }
+      "block_order": [
+        "p1",
+        "p2",
+        "p3"
+      ],
+      "settings": {
+        "heading": "Why Choose PhytoFreak?",
+        "text": ""
+      }
     },
-    "bundle": { "type": "pf-product-bundle", "settings": { "heading": "Frequently Bought Together" } },
+    "bundle": {
+      "type": "pf-product-bundle",
+      "settings": {
+        "show_section": true,
+        "heading": "Frequently Bought Together",
+        "discount_percent": 10
+      }
+    },
     "reviews": {
       "type": "pf-product-reviews",
       "blocks": {
-        "b5": { "type": "rating_bar", "settings": { "label": "5 star", "percent": 88 } },
-        "b4": { "type": "rating_bar", "settings": { "label": "4 star", "percent": 8 } },
-        "b3": { "type": "rating_bar", "settings": { "label": "3 star", "percent": 3 } },
+        "b5": {
+          "type": "rating_bar",
+          "settings": {
+            "label": "5 star",
+            "percent": 88
+          }
+        },
+        "b4": {
+          "type": "rating_bar",
+          "settings": {
+            "label": "4 star",
+            "percent": 8
+          }
+        },
+        "b3": {
+          "type": "rating_bar",
+          "settings": {
+            "label": "3 star",
+            "percent": 3
+          }
+        },
         "r1": {
           "type": "review",
           "settings": {
@@ -84,13 +247,47 @@
           }
         }
       },
-      "block_order": ["b5", "b4", "b3", "r1"],
+      "block_order": [
+        "b5",
+        "b4",
+        "b3",
+        "r1"
+      ],
       "settings": {
         "heading": "Customer Reviews",
         "rating_score": "4.9",
-        "rating_text": "Based on 142 reviews"
+        "rating_text": "Based on 142 reviews",
+        "write_review_url": ""
+      }
+    },
+    "1781187898c43e66c7": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_7Ba3ft": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_7Ba3ft"
+      ],
+      "settings": {
+        "include_margins": true
       }
     }
   },
-  "order": ["main", "trust", "tabs", "why", "bundle", "reviews"]
+  "order": [
+    "main",
+    "trust",
+    "tabs",
+    "why",
+    "bundle",
+    "reviews",
+    "1781187898c43e66c7"
+  ]
 }
