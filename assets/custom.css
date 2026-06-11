@@ -2522,14 +2522,23 @@ cart-items.is-empty .pf-cart-layout { display: none; }
 
 
 /* ═══════════════════════════════════════════════
-   JUDGE.ME OVERRIDES — Premium PhytoFreak UI
+   JUDGE.ME OVERRIDES — High Visibility Dark Mode
 ═══════════════════════════════════════════════ */
+
+/* Force ALL text inside the widget to be white by default */
+.jdgm-widget,
+.jdgm-widget *,
+.jdgm-rev-widg,
+.jdgm-rev-widg * {
+  color: #ffffff !important;
+  font-family: inherit !important;
+}
 
 /* Main widget container */
 .jdgm-widget {
   background: transparent !important;
-  color: #fff !important;
-  font-family: inherit !important;
+  display: block !important;
+  width: 100% !important;
 }
 
 /* Hide ugly default borders */
@@ -2538,126 +2547,107 @@ cart-items.is-empty .pf-cart-layout { display: none; }
   border: none !important;
 }
 
-/* Stars to vibrant lime with subtle glow */
+/* Stars to vibrant lime */
 .jdgm-star {
   color: var(--pf-lime) !important;
-  filter: drop-shadow(0 0 4px rgba(210, 255, 52, 0.4)) !important;
 }
 
-/* Premium Review Cards — Glassmorphism */
+/* High Contrast Review Cards */
 .jdgm-rev {
-  background: rgba(255, 255, 255, 0.02) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
-  border-radius: 16px !important;
-  padding: 28px !important;
+  background-color: #0f1623 !important; /* Solid dark color for visibility */
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
   margin-bottom: 24px !important;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
-}
-
-.jdgm-rev:hover {
-  transform: translateY(-4px) !important;
-  border-color: rgba(210, 255, 52, 0.2) !important;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 0 20px rgba(210, 255, 52, 0.05) !important;
 }
 
 /* Reviewer Name */
 .jdgm-rev__author {
-  color: #fff !important;
+  color: #ffffff !important;
   font-weight: 800 !important;
   font-size: 16px !important;
-  letter-spacing: 0.02em !important;
+  display: inline-block !important;
 }
 
 /* Review Date */
 .jdgm-rev__timestamp {
-  color: var(--pf-text-dim) !important;
-  font-size: 11px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.08em !important;
+  color: #8fa3b8 !important; /* pf-text-muted */
+  font-size: 12px !important;
   margin-left: 12px !important;
 }
 
 /* Verified Buyer Badge */
 .jdgm-rev__buyer-badge {
-  color: var(--pf-cyan) !important;
-  font-weight: 600 !important;
+  color: var(--pf-bg) !important;
+  background-color: var(--pf-cyan) !important;
+  font-weight: 700 !important;
   font-size: 11px !important;
-  background: rgba(74, 184, 196, 0.1) !important;
   padding: 4px 8px !important;
   border-radius: 4px !important;
   margin-left: 12px !important;
+  display: inline-block !important;
 }
 
-/* Review Body */
+/* Review Body (The actual review text) */
 .jdgm-rev__body {
-  color: var(--pf-text-muted) !important;
-  line-height: 1.7 !important;
+  color: #e2e8f0 !important; /* Very bright gray for readable text */
+  line-height: 1.6 !important;
   font-size: 15px !important;
   margin-top: 16px !important;
 }
 
 /* Header summary text */
 .jdgm-rev-widg__summary-text {
-  color: var(--pf-text-muted) !important;
-  font-size: 14px !important;
+  color: #8fa3b8 !important;
 }
 
-/* Buttons (Write a review, Submit) — Glowing Outline Style */
-.jdgm-write-rev-link, .jdgm-submit-rev {
-  background: transparent !important;
-  color: var(--pf-lime) !important;
-  border: 1px solid var(--pf-lime) !important;
-  border-radius: 8px !important;
-  padding: 14px 28px !important;
+/* Buttons (Write a review, Submit, Load More) */
+.jdgm-write-rev-link, 
+.jdgm-submit-rev,
+.jdgm-paginate__load-more {
+  background-color: var(--pf-lime) !important;
+  color: #000000 !important; /* Black text on lime button for MAX visibility */
+  border: none !important;
+  border-radius: 6px !important;
+  padding: 12px 24px !important;
   font-weight: 800 !important;
-  font-size: 12px !important;
-  letter-spacing: 0.14em !important;
+  font-size: 13px !important;
   text-transform: uppercase !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 0 15px rgba(210, 255, 52, 0.1) !important;
-}
-
-.jdgm-write-rev-link:hover, .jdgm-submit-rev:hover {
-  background: var(--pf-lime) !important;
-  color: var(--pf-bg) !important;
-  box-shadow: 0 0 25px rgba(210, 255, 52, 0.4) !important;
-  transform: translateY(-2px) !important;
+  cursor: pointer !important;
+  display: inline-block !important;
+  margin-top: 10px !important;
 }
 
 /* Inputs / Forms */
-.jdgm-form__fieldset input, .jdgm-form__fieldset textarea {
-  background: rgba(255, 255, 255, 0.02) !important;
-  border: 1px solid rgba(255, 255, 255, 0.1) !important;
-  color: #fff !important;
-  border-radius: 8px !important;
-  padding: 14px !important;
-  font-family: inherit !important;
-  transition: border-color 0.3s, box-shadow 0.3s !important;
-}
-.jdgm-form__fieldset input:focus, .jdgm-form__fieldset textarea:focus {
-  border-color: var(--pf-cyan) !important;
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(74, 184, 196, 0.15) !important;
-  background: rgba(255, 255, 255, 0.04) !important;
+.jdgm-form__fieldset input, 
+.jdgm-form__fieldset textarea {
+  background-color: #0b111a !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  padding: 12px !important;
+  width: 100% !important;
 }
 
 /* Histogram / Rating Breakdown */
 .jdgm-histogram__bar-content {
-  background: linear-gradient(90deg, var(--pf-lime) 0%, #aee617 100%) !important;
-  border-radius: 10px !important;
-  box-shadow: 0 0 8px rgba(210, 255, 52, 0.3) !important;
+  background-color: var(--pf-lime) !important;
 }
 .jdgm-histogram__bar {
-  background: rgba(255, 255, 255, 0.04) !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
   border-radius: 10px !important;
-  height: 8px !important;
 }
 
-/* Histogram Text */
-.jdgm-histogram__row {
-  color: var(--pf-text-dim) !important;
-  font-size: 13px !important;
+/* Histogram Text (5 star, 4 star etc) */
+.jdgm-histogram__row,
+.jdgm-histogram__star {
+  color: #ffffff !important;
+}
+
+/* Form labels */
+.jdgm-form__fieldset label {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  margin-bottom: 6px !important;
+  display: block !important;
 }
