@@ -2522,98 +2522,142 @@ cart-items.is-empty .pf-cart-layout { display: none; }
 
 
 /* ═══════════════════════════════════════════════
-   JUDGE.ME OVERRIDES — PhytoFreak Theme
+   JUDGE.ME OVERRIDES — Premium PhytoFreak UI
 ═══════════════════════════════════════════════ */
 
-/* Main widget background and typography */
+/* Main widget container */
 .jdgm-widget {
-  background-color: var(--pf-bg) !important;
+  background: transparent !important;
   color: #fff !important;
   font-family: inherit !important;
 }
 
-/* Stars to lime */
-.jdgm-star {
-  color: var(--pf-lime) !important;
+/* Hide ugly default borders */
+.jdgm-rev-widg__header,
+.jdgm-rev-widg__reviews {
+  border: none !important;
 }
 
-/* Review cards */
+/* Stars to vibrant lime with subtle glow */
+.jdgm-star {
+  color: var(--pf-lime) !important;
+  filter: drop-shadow(0 0 4px rgba(210, 255, 52, 0.4)) !important;
+}
+
+/* Premium Review Cards — Glassmorphism */
 .jdgm-rev {
-  background: var(--pf-bg-alt) !important;
-  border: 1px solid var(--pf-border) !important;
-  border-radius: 12px !important;
-  padding: 24px !important;
-  margin-bottom: 20px !important;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 16px !important;
+  padding: 28px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.jdgm-rev:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(210, 255, 52, 0.2) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25), 0 0 20px rgba(210, 255, 52, 0.05) !important;
 }
 
 /* Reviewer Name */
 .jdgm-rev__author {
   color: #fff !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
   font-size: 16px !important;
+  letter-spacing: 0.02em !important;
 }
 
 /* Review Date */
 .jdgm-rev__timestamp {
   color: var(--pf-text-dim) !important;
-  font-size: 12px !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  margin-left: 12px !important;
 }
 
 /* Verified Buyer Badge */
 .jdgm-rev__buyer-badge {
   color: var(--pf-cyan) !important;
   font-weight: 600 !important;
+  font-size: 11px !important;
+  background: rgba(74, 184, 196, 0.1) !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  margin-left: 12px !important;
 }
 
 /* Review Body */
 .jdgm-rev__body {
   color: var(--pf-text-muted) !important;
-  line-height: 1.6 !important;
-  font-size: 14px !important;
-  margin-top: 12px !important;
-}
-
-/* Buttons (Write a review, Submit) */
-.jdgm-write-rev-link, .jdgm-submit-rev {
-  background-color: var(--pf-lime) !important;
-  color: var(--pf-bg) !important;
-  border: none !important;
-  border-radius: 6px !important;
-  padding: 12px 24px !important;
-  font-weight: 800 !important;
-  letter-spacing: 0.1em !important;
-  text-transform: uppercase !important;
-  transition: all 0.2s !important;
-}
-
-.jdgm-write-rev-link:hover, .jdgm-submit-rev:hover {
-  background-color: var(--pf-lime-hover) !important;
-  box-shadow: 0 4px 20px rgba(210, 255, 52, 0.4) !important;
-}
-
-/* Inputs / Forms */
-.jdgm-form__fieldset input, .jdgm-form__fieldset textarea {
-  background-color: var(--pf-bg) !important;
-  border: 1px solid var(--pf-border) !important;
-  color: #fff !important;
-  border-radius: 6px !important;
-}
-.jdgm-form__fieldset input:focus, .jdgm-form__fieldset textarea:focus {
-  border-color: var(--pf-cyan) !important;
-  outline: none !important;
-}
-
-/* Histogram / Rating Breakdown */
-.jdgm-histogram__bar-content {
-  background-color: var(--pf-lime) !important;
-}
-.jdgm-histogram__bar {
-  background-color: rgba(255,255,255,0.05) !important;
-  border-radius: 10px !important;
+  line-height: 1.7 !important;
+  font-size: 15px !important;
+  margin-top: 16px !important;
 }
 
 /* Header summary text */
 .jdgm-rev-widg__summary-text {
   color: var(--pf-text-muted) !important;
+  font-size: 14px !important;
+}
+
+/* Buttons (Write a review, Submit) — Glowing Outline Style */
+.jdgm-write-rev-link, .jdgm-submit-rev {
+  background: transparent !important;
+  color: var(--pf-lime) !important;
+  border: 1px solid var(--pf-lime) !important;
+  border-radius: 8px !important;
+  padding: 14px 28px !important;
+  font-weight: 800 !important;
+  font-size: 12px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 15px rgba(210, 255, 52, 0.1) !important;
+}
+
+.jdgm-write-rev-link:hover, .jdgm-submit-rev:hover {
+  background: var(--pf-lime) !important;
+  color: var(--pf-bg) !important;
+  box-shadow: 0 0 25px rgba(210, 255, 52, 0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Inputs / Forms */
+.jdgm-form__fieldset input, .jdgm-form__fieldset textarea {
+  background: rgba(255, 255, 255, 0.02) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  padding: 14px !important;
+  font-family: inherit !important;
+  transition: border-color 0.3s, box-shadow 0.3s !important;
+}
+.jdgm-form__fieldset input:focus, .jdgm-form__fieldset textarea:focus {
+  border-color: var(--pf-cyan) !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(74, 184, 196, 0.15) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Histogram / Rating Breakdown */
+.jdgm-histogram__bar-content {
+  background: linear-gradient(90deg, var(--pf-lime) 0%, #aee617 100%) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 0 8px rgba(210, 255, 52, 0.3) !important;
+}
+.jdgm-histogram__bar {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-radius: 10px !important;
+  height: 8px !important;
+}
+
+/* Histogram Text */
+.jdgm-histogram__row {
+  color: var(--pf-text-dim) !important;
+  font-size: 13px !important;
 }
