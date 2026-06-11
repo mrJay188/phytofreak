@@ -258,6 +258,7 @@
         "b3",
         "r1"
       ],
+      "disabled": true,
       "settings": {
         "heading": "Customer Reviews",
         "rating_score": "4.9",
