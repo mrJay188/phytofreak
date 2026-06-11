@@ -2525,11 +2525,8 @@ cart-items.is-empty .pf-cart-layout { display: none; }
    JUDGE.ME OVERRIDES — Exact Theme Match
 ═══════════════════════════════════════════════ */
 
-/* Force clean typography */
-.jdgm-widget,
-.jdgm-widget *,
-.jdgm-rev-widg,
-.jdgm-rev-widg * {
+/* Force clean typography for text elements only */
+.jdgm-widget {
   font-family: inherit !important;
 }
 
@@ -2589,7 +2586,12 @@ cart-items.is-empty .pf-cart-layout { display: none; }
   margin-top: 16px !important;
 }
 
-/* Header summary text */
+/* Header title and summary text */
+.jdgm-rev-widg__title {
+  color: #ffffff !important;
+  font-family: inherit !important;
+}
+
 .jdgm-rev-widg__summary-text {
   color: var(--pf-text-muted) !important;
   font-size: 13px !important;
