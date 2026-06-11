@@ -2522,132 +2522,147 @@ cart-items.is-empty .pf-cart-layout { display: none; }
 
 
 /* ═══════════════════════════════════════════════
-   JUDGE.ME OVERRIDES — High Visibility Dark Mode
+   JUDGE.ME OVERRIDES — Exact Theme Match
 ═══════════════════════════════════════════════ */
 
-/* Force ALL text inside the widget to be white by default */
+/* Force clean typography */
 .jdgm-widget,
 .jdgm-widget *,
 .jdgm-rev-widg,
 .jdgm-rev-widg * {
-  color: #ffffff !important;
   font-family: inherit !important;
 }
 
-/* Main widget container */
-.jdgm-widget {
-  background: transparent !important;
-  display: block !important;
-  width: 100% !important;
-}
-
-/* Hide ugly default borders */
+/* Hide default borders */
 .jdgm-rev-widg__header,
 .jdgm-rev-widg__reviews {
   border: none !important;
 }
 
-/* Stars to vibrant lime */
+/* Stars to Gold (Match .pd-review-card .stars) */
 .jdgm-star {
-  color: var(--pf-lime) !important;
+  color: var(--pf-gold) !important;
+  font-size: 14px !important;
+  letter-spacing: 1px !important;
 }
 
-/* High Contrast Review Cards */
+/* Review Cards (Match .pd-review-card) */
 .jdgm-rev {
-  background-color: #0f1623 !important; /* Solid dark color for visibility */
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  border-radius: 12px !important;
   padding: 24px !important;
+  background: linear-gradient(180deg, #0d1828 0%, #0a1220 100%) !important;
+  border: 1px solid var(--pf-border) !important;
+  border-radius: 8px !important;
   margin-bottom: 24px !important;
 }
 
-/* Reviewer Name */
+/* Reviewer Name (Match .pd-review-card .name) */
 .jdgm-rev__author {
   color: #ffffff !important;
-  font-weight: 800 !important;
-  font-size: 16px !important;
-  display: inline-block !important;
-}
-
-/* Review Date */
-.jdgm-rev__timestamp {
-  color: #8fa3b8 !important; /* pf-text-muted */
-  font-size: 12px !important;
-  margin-left: 12px !important;
-}
-
-/* Verified Buyer Badge */
-.jdgm-rev__buyer-badge {
-  color: var(--pf-bg) !important;
-  background-color: var(--pf-cyan) !important;
   font-weight: 700 !important;
+  font-size: 14px !important;
+  display: inline-block !important;
+}
+
+/* Review Date (Match .pd-review-card .meta) */
+.jdgm-rev__timestamp {
+  color: var(--pf-text-dim) !important;
   font-size: 11px !important;
-  padding: 4px 8px !important;
-  border-radius: 4px !important;
+  margin-left: 12px !important;
+}
+
+/* Verified Buyer Badge (Match .pd-review-card .verified) */
+.jdgm-rev__buyer-badge {
+  font-size: 11px !important;
+  color: var(--pf-cyan) !important;
+  font-weight: 600 !important;
+  background: transparent !important;
+  padding: 0 !important;
   margin-left: 12px !important;
   display: inline-block !important;
 }
 
-/* Review Body (The actual review text) */
+/* Review Body (Match .pd-review-card p) */
 .jdgm-rev__body {
-  color: #e2e8f0 !important; /* Very bright gray for readable text */
-  line-height: 1.6 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+  color: var(--pf-text-muted) !important;
   margin-top: 16px !important;
 }
 
 /* Header summary text */
 .jdgm-rev-widg__summary-text {
-  color: #8fa3b8 !important;
+  color: var(--pf-text-muted) !important;
+  font-size: 13px !important;
 }
 
-/* Buttons (Write a review, Submit, Load More) */
+/* Buttons (Match .pd-write-review) */
 .jdgm-write-rev-link, 
 .jdgm-submit-rev,
 .jdgm-paginate__load-more {
-  background-color: var(--pf-lime) !important;
-  color: #000000 !important; /* Black text on lime button for MAX visibility */
-  border: none !important;
-  border-radius: 6px !important;
-  padding: 12px 24px !important;
-  font-weight: 800 !important;
-  font-size: 13px !important;
-  text-transform: uppercase !important;
-  cursor: pointer !important;
   display: inline-block !important;
+  padding: 12px 20px !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  background: transparent !important;
+  border: 1px solid var(--pf-border-soft) !important;
+  border-radius: 4px !important;
+  color: var(--pf-text) !important;
+  transition: border-color 0.2s, color 0.2s !important;
+  text-transform: uppercase !important;
   margin-top: 10px !important;
+}
+
+.jdgm-write-rev-link:hover, 
+.jdgm-submit-rev:hover,
+.jdgm-paginate__load-more:hover {
+  border-color: var(--pf-lime) !important;
+  color: var(--pf-lime) !important;
 }
 
 /* Inputs / Forms */
 .jdgm-form__fieldset input, 
 .jdgm-form__fieldset textarea {
-  background-color: #0b111a !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
+  background: var(--pf-bg) !important;
+  border: 1px solid var(--pf-border-soft) !important;
+  color: var(--pf-text) !important;
   border-radius: 6px !important;
-  padding: 12px !important;
+  padding: 12px 14px !important;
+  font-size: 13px !important;
   width: 100% !important;
 }
 
-/* Histogram / Rating Breakdown */
-.jdgm-histogram__bar-content {
-  background-color: var(--pf-lime) !important;
-}
-.jdgm-histogram__bar {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-  border-radius: 10px !important;
-}
-
-/* Histogram Text (5 star, 4 star etc) */
-.jdgm-histogram__row,
-.jdgm-histogram__star {
-  color: #ffffff !important;
+.jdgm-form__fieldset input:focus, 
+.jdgm-form__fieldset textarea:focus {
+  border-color: var(--pf-cyan) !important;
+  outline: none !important;
 }
 
 /* Form labels */
 .jdgm-form__fieldset label {
-  color: #ffffff !important;
-  font-weight: 600 !important;
-  margin-bottom: 6px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  color: var(--pf-text-dim) !important;
+  text-transform: uppercase !important;
+  margin-bottom: 8px !important;
   display: block !important;
+}
+
+/* Histogram / Rating Breakdown (Match .pd-bar-track and .pd-bar-fill) */
+.jdgm-histogram__bar-content {
+  background-color: var(--pf-lime) !important;
+  border-radius: 4px !important;
+}
+.jdgm-histogram__bar {
+  background-color: var(--pf-bg-card) !important;
+  border-radius: 4px !important;
+  height: 8px !important;
+}
+
+/* Histogram Text */
+.jdgm-histogram__row,
+.jdgm-histogram__star {
+  color: var(--pf-text-muted) !important;
+  font-size: 12px !important;
 }
