@@ -140,6 +140,11 @@
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
         "disabled": false,
         "settings": {}
+      },
+      "15734677551373749047": {
+        "type": "shopify://apps/flits/blocks/flits/d5eeb0f1-bc12-4372-af4d-40ca0d3ad847",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
