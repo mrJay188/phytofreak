@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -5,21 +14,78 @@
     "pf-footer": {
       "type": "pf-footer",
       "blocks": {
-        "menu-shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "footer" } },
-        "menu-learn": { "type": "menu", "settings": { "heading": "Learn", "menu": "footer" } },
-        "menu-company": { "type": "menu", "settings": { "heading": "Company", "menu": "footer" } },
-        "newsletter": { "type": "newsletter" },
-        "trust-1": { "type": "trust_badge", "settings": { "text": "Live Arrival Guarantee" } },
-        "trust-2": { "type": "trust_badge", "settings": { "text": "Secure Checkout" } },
-        "trust-3": { "type": "trust_badge", "settings": { "text": "Ships Fresh" } }
+        "menu-shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": "shop"
+          }
+        },
+        "menu-learn": {
+          "type": "menu",
+          "settings": {
+            "heading": "Learn",
+            "menu": "learn"
+          }
+        },
+        "menu-company": {
+          "type": "menu",
+          "settings": {
+            "heading": "Company",
+            "menu": "company"
+          }
+        },
+        "newsletter": {
+          "type": "newsletter",
+          "settings": {
+            "heading": "Newsletter",
+            "text": "Get reef tips, restock alerts, and exclusive discounts.",
+            "placeholder": "Enter your email"
+          }
+        },
+        "trust-1": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Live Arrival Guarantee"
+          }
+        },
+        "trust-2": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Secure Checkout"
+          }
+        },
+        "trust-3": {
+          "type": "trust_badge",
+          "settings": {
+            "text": "Ships Fresh"
+          }
+        }
       },
-      "block_order": ["menu-shop", "menu-learn", "menu-company", "newsletter", "trust-1", "trust-2", "trust-3"],
+      "block_order": [
+        "menu-shop",
+        "menu-learn",
+        "menu-company",
+        "newsletter",
+        "trust-1",
+        "trust-2",
+        "trust-3"
+      ],
       "settings": {
+        "logo_text": "Phyto",
+        "logo_accent": "Freak",
         "description": "Premium live phytoplankton and copepod cultures for a healthier, more vibrant reef.",
         "show_social": true,
+        "social_instagram": "",
+        "social_youtube": "",
+        "social_tiktok": "",
+        "social_facebook": "",
+        "copyright_text": "All rights reserved.",
         "show_payment": true
       }
     }
   },
-  "order": ["pf-footer"]
+  "order": [
+    "pf-footer"
+  ]
 }
