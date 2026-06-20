@@ -1,36 +1,107 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "pf-hero": {
       "type": "pf-hero",
       "blocks": {
-        "t1": { "type": "trust_item", "settings": { "text": "LIVE ARRIVAL\nGUARANTEE" } },
-        "t2": { "type": "trust_item", "settings": { "text": "FRESH\nHARVESTED" } },
-        "t3": { "type": "trust_item", "settings": { "text": "LAB\nCULTURED" } },
-        "t4": { "type": "trust_item", "settings": { "text": "REEF\nTESTED" } }
+        "t1": {
+          "type": "trust_item",
+          "settings": {
+            "icon_svg": "",
+            "text": "LIVE ARRIVAL\nGUARANTEE"
+          }
+        },
+        "t2": {
+          "type": "trust_item",
+          "settings": {
+            "icon_svg": "",
+            "text": "FRESH\nHARVESTED"
+          }
+        },
+        "t3": {
+          "type": "trust_item",
+          "settings": {
+            "icon_svg": "",
+            "text": "LAB\nCULTURED"
+          }
+        },
+        "t4": {
+          "type": "trust_item",
+          "settings": {
+            "icon_svg": "",
+            "text": "REEF\nTESTED"
+          }
+        }
       },
-      "block_order": ["t1", "t2", "t3", "t4"],
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ],
       "settings": {
         "label": "LIVE NUTRITION. REAL RESULTS.",
         "heading": "Feed Your Reef Like",
         "heading_accent": "Nature Intended.",
         "text": "Premium live phytoplankton and copepod cultures engineered for explosive coral growth, vibrant coloration, and thriving marine ecosystems.",
         "button_1_label": "SHOP PHYTOPLANKTON",
-        "button_2_label": "SHOP COPEPODS"
+        "button_1_link": "",
+        "button_2_label": "SHOP COPEPODS",
+        "button_2_link": ""
       }
     },
-    "pf-promo": { "type": "pf-promo-bar", "settings": {} },
+    "pf-promo": {
+      "type": "pf-promo-bar",
+      "settings": {
+        "timer_label": "NEXT FRESH HARVEST SHIPS IN",
+        "timer_hours": "14",
+        "timer_minutes": "10",
+        "timer_seconds": "17",
+        "center_text": "ORDER NOW FOR GUARANTEED SHIPMENT!",
+        "rating_text": "4.9/5 FROM 1,200+ REEFERS"
+      }
+    },
     "pf-culture": {
       "type": "pf-culture",
       "blocks": {
-        "f1": { "type": "feature", "settings": { "text": "High-density live cultures" } },
-        "f2": { "type": "feature", "settings": { "text": "Clean, sustainable methods" } },
-        "f3": { "type": "feature", "settings": { "text": "Harvested fresh to order" } }
+        "f1": {
+          "type": "feature",
+          "settings": {
+            "text": "High-density live cultures"
+          }
+        },
+        "f2": {
+          "type": "feature",
+          "settings": {
+            "text": "Clean, sustainable methods"
+          }
+        },
+        "f3": {
+          "type": "feature",
+          "settings": {
+            "text": "Harvested fresh to order"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3"],
+      "block_order": [
+        "f1",
+        "f2",
+        "f3"
+      ],
       "settings": {
         "label": "SCIENCE. CULTURE. PERFORMANCE.",
         "heading": "Cultured for Maximum Density.",
-        "button_label": "LEARN MORE ABOUT OUR CULTURES"
+        "text": "",
+        "button_label": "LEARN MORE ABOUT OUR CULTURES",
+        "button_link": ""
       }
     },
     "pf-products": {
@@ -38,6 +109,7 @@
       "settings": {
         "label": "PREMIUM LIVE CULTURES",
         "heading": "Our Most Popular Products",
+        "collection": "",
         "products_to_show": 4,
         "view_all_label": "VIEW ALL PRODUCTS"
       }
@@ -45,30 +117,100 @@
     "pf-nutrition": {
       "type": "pf-nutrition",
       "blocks": {
-        "b1": { "type": "benefit", "settings": { "text": "Explosive coral growth" } },
-        "b2": { "type": "benefit", "settings": { "text": "Vibrant coloration" } },
-        "b3": { "type": "benefit", "settings": { "text": "Thriving copepod populations" } },
-        "b4": { "type": "benefit", "settings": { "text": "Lab-cultured purity" } }
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "text": "Explosive coral growth"
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "text": "Vibrant coloration"
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "text": "Thriving copepod populations"
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "text": "Lab-cultured purity"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3", "b4"],
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4"
+      ],
       "settings": {
         "label": "POWERED BY NATURE",
         "heading": "Your Reef Deserves",
         "heading_accent": "Better Nutrition.",
-        "button_label": "SEE THE DIFFERENCE"
+        "text": "",
+        "button_label": "SEE THE DIFFERENCE",
+        "button_link": ""
       }
     },
     "pf-testimonials": {
       "type": "pf-testimonials",
       "blocks": {
-        "q1": { "type": "testimonial", "settings": { "quote": "My corals have never looked better. Huge polyp extension and growth!", "author": "@REEFLIFE" } },
-        "q2": { "type": "testimonial", "settings": { "quote": "The best phyto I've used. You can see the density!", "author": "@SALTY_AQUATICS" } },
-        "q3": { "type": "testimonial", "settings": { "quote": "My mandarins devour the Tigriopus. Total game changer.", "author": "@MANDARIN_DREAMS" } },
-        "q4": { "type": "testimonial", "settings": { "quote": "Ships fast, arrives fresh, and my reef loves it.", "author": "@CORAL_GARDENER" } },
-        "q5": { "type": "testimonial", "settings": { "quote": "PhytoFreak is now a must-have in my dosing routine.", "author": "@REEF_NERD" } }
+        "q1": {
+          "type": "testimonial",
+          "settings": {
+            "fallback_image_url": "",
+            "quote": "My corals have never looked better. Huge polyp extension and growth!",
+            "author": "@REEFLIFE"
+          }
+        },
+        "testimonial_c8CEYN": {
+          "type": "testimonial",
+          "settings": {
+            "fallback_image_url": "",
+            "quote": "",
+            "author": "@REEFLIFE"
+          }
+        },
+        "q2": {
+          "type": "testimonial",
+          "settings": {
+            "fallback_image_url": "https://plus.unsplash.com/premium_photo-1661841439995-1706237c83dc?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Y29yYWwlMjByZWVmc3xlbnwwfHwwfHx8MA%3D%3D",
+            "quote": "The best phyto I've used. You can see the density!",
+            "author": "@SALTY_AQUATICS"
+          }
+        },
+        "q3": {
+          "type": "testimonial",
+          "settings": {
+            "fallback_image_url": "https://plus.unsplash.com/premium_photo-1661849977311-151a9e20b3b6?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29yYWwlMjByZWVmc3xlbnwwfHwwfHx8MA%3D%3D",
+            "quote": "My mandarins devour the Tigriopus. Total game changer.",
+            "author": "@MANDARIN_DREAMS"
+          }
+        },
+        "q4": {
+          "type": "testimonial",
+          "settings": {
+            "fallback_image_url": "https://images.unsplash.com/photo-1546500840-ae38253aba9b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNvcmFsJTIwcmVlZnN8ZW58MHx8MHx8fDA%3D",
+            "quote": "Ships fast, arrives fresh, and my reef loves it.",
+            "author": "@CORAL_GARDENER"
+          }
+        }
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"],
-      "settings": { "label": "TRUSTED BY SERIOUS REEF KEEPERS" }
+      "block_order": [
+        "q1",
+        "testimonial_c8CEYN",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {
+        "label": "TRUSTED BY SERIOUS REEF KEEPERS"
+      }
     },
     "pf-knowledge": {
       "type": "pf-knowledge",
@@ -76,28 +218,31 @@
         "a1": {
           "type": "article",
           "settings": {
+            "fallback_image_url": "https://images.unsplash.com/photo-1502726299822-6f583f972e02?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHVuZGVyd2F0ZXJ8ZW58MHx8MHx8fDA%3D",
             "title": "How to Dose Phytoplankton",
+            "link": "",
             "link_label": "READ GUIDE",
-            "show_play": true,
-            "fallback_image_url": "https://images.unsplash.com/photo-1583212292454-1fe622aeb725?w=700&h=400&fit=crop&q=80"
+            "show_play": true
           }
         },
         "a2": {
           "type": "article",
           "settings": {
+            "fallback_image_url": "https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dW5kZXJ3YXRlcnxlbnwwfHwwfHx8MA%3D%3D",
             "title": "Best Copepods for Mandarin Fish",
+            "link": "",
             "link_label": "READ GUIDE",
-            "show_play": true,
-            "fallback_image_url": "https://images.unsplash.com/photo-1546026423-cc8cb6d87afd?w=700&h=400&fit=crop&q=80"
+            "show_play": true
           }
         },
         "a3": {
           "type": "article",
           "settings": {
+            "fallback_image_url": "https://images.unsplash.com/photo-1674786272877-98e180235c48",
             "title": "Building a Home Copepod Culture",
+            "link": "",
             "link_label": "READ GUIDE",
-            "show_play": true,
-            "fallback_image_url": "https://images.unsplash.com/photo-1532187863488-abf9db028710?w=700&h=400&fit=crop&q=80"
+            "show_play": true
           }
         },
         "r1": {
@@ -105,27 +250,67 @@
           "settings": {
             "title": "More Resources",
             "text": "Explore guides, videos, and reef nutrition tips from the PhytoFreak team.",
-            "button_label": "EXPLORE ALL ARTICLES"
+            "button_label": "EXPLORE ALL ARTICLES",
+            "button_link": ""
           }
         }
       },
-      "block_order": ["a1", "a2", "a3", "r1"],
-      "settings": { "label": "KNOWLEDGE FOR A THRIVING REEF" }
+      "block_order": [
+        "a1",
+        "a2",
+        "a3",
+        "r1"
+      ],
+      "settings": {
+        "label": "KNOWLEDGE FOR A THRIVING REEF"
+      }
     },
     "pf-subscribe": {
       "type": "pf-subscribe-banner",
       "blocks": {
-        "p1": { "type": "perk", "settings": { "title": "Save 10%+", "subtitle": "Every Order" } },
-        "p2": { "type": "perk", "settings": { "title": "Priority", "subtitle": "Harvest" } },
-        "p3": { "type": "perk", "settings": { "title": "Flexible", "subtitle": "Delivery" } },
-        "p4": { "type": "perk", "settings": { "title": "Cancel", "subtitle": "Anytime" } }
+        "p1": {
+          "type": "perk",
+          "settings": {
+            "title": "Save 10%+",
+            "subtitle": "Every Order"
+          }
+        },
+        "p2": {
+          "type": "perk",
+          "settings": {
+            "title": "Priority",
+            "subtitle": "Harvest"
+          }
+        },
+        "p3": {
+          "type": "perk",
+          "settings": {
+            "title": "Flexible",
+            "subtitle": "Delivery"
+          }
+        },
+        "p4": {
+          "type": "perk",
+          "settings": {
+            "title": "Cancel",
+            "subtitle": "Anytime"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4"],
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
       "settings": {
         "heading": "Never Run Out of",
         "heading_accent": "Reef Nutrition.",
+        "subtext": "Save money. Ensure consistency.",
         "button_1_label": "START YOUR SUBSCRIPTION",
-        "button_2_label": "LEARN MORE →"
+        "button_1_link": "",
+        "button_2_label": "LEARN MORE →",
+        "button_2_link": ""
       }
     }
   },
